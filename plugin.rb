@@ -1,2 +1,2 @@
-after_initialize do
-  register_asset "stylesheets/mobile/mobile.scss", :mobile 
+# after_initialize do
+#   register_asset "stylesheets/mobile/mobile.scss", :mobile 
