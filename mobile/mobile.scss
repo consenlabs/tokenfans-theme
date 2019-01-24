@@ -29,6 +29,10 @@
     border-radius: 4px;
 }
 
+.topic-list-bottom h3 {
+    font-size: $font-down-1;
+    font-weight: normal;
+}
 .list-controls .nav-pills .drop {
     border-radius: 8px;
     width: unset;
@@ -61,7 +65,9 @@ button.btn {
     color: white;
     border-radius: 4px;
 }
-
+.badge-wrapper.bullet .badge-category-parent-bg, .badge-wrapper.bullet .badge-category-bg {
+    display: none;
+}
 .badge-category-bg {
     display: none;
 }
@@ -74,3 +80,7 @@ button.btn {
     color: white;
 }
 
+#reply-control .d-editor-button-bar .btn {
+    background-color: #e9e9e9;
+    color: #646464;
+}
