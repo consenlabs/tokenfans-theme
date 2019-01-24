@@ -1,5 +1,5 @@
 {
-  "about_url": "https://github.com/chezhe/tokenfans-theme",
+  "about_url": "https://github.com/consenlabs/tokenfans-theme",
   "color_schemes": {
     "Material Default": {
       "primary": "212121",
@@ -26,6 +26,7 @@
       "love": "e91e63"
     }
   },
-  "license_url": "https://github.com/chezhe/tokenfans-theme/blob/master/LICENSE",
-  "name": "TokenFans Design"
+  "license_url": "https://github.com/consenlabs/tokenfans-theme/blob/master/LICENSE",
+  "name": "TokenFans Design",
+  "component": true
 }
