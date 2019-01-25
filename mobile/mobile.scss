@@ -139,8 +139,17 @@ button.btn {
 .user-main .about {
     margin-bottom: 0;
     .secondary {
-        padding: 4px 10px;
+        padding: 5px 10px;
         border-bottom: 0;
+
+        dt, dd {
+            font-size: $font-down-2;
+            color: #17153c;
+        }
+        span {
+            font-size: $font-0;
+            color: #17153c;
+        }
     }
 }
 
@@ -189,4 +198,45 @@ button.btn {
         border-radius: 4px;
         padding: 8px 10px;   
     }
+}
+
+.user-menu .notifications li a>div {
+    font-size: $font-down-1;
+    color: rgba(#17153c, 0.5);
+}
+.user-menu .notifications li span {
+    display: block;
+    font-size: $font-0;
+    line-height: 2;
+}
+
+.user-menu .notifications .fa {
+    line-height: 1.5;
+}
+
+.user-menu .notifications .read {
+    border-bottom: 1px solid rgba(22, 21, 60, 0.2);
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.search-container {
+    padding: 0 10px;
+}
+
+.search-advanced-title {
+    display: none;
+}
+
+#topic-title {
+    padding: 15px 10px;
+}
+
+.topic-post {
+    padding: 0 10px;
+}
+
+.search-container .search-bar .search-query {
+    border-radius: 1em;
 }
