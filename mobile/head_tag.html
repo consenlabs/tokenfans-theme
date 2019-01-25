@@ -2,7 +2,7 @@
 <script type="text/discourse-plugin" version="0.8">
   $(document).ready(function() {
     const user = api.getCurrentUser();
-    if (user && !user.admin) {
+    if (!user || !user.admin) {
       $('#toggle-hamburger-menu').hide();
     }
   });
