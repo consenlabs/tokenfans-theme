@@ -211,7 +211,7 @@ button.btn {
 }
 
 .user-menu .notifications .fa {
-    line-height: 1.5;
+    line-height: 1;
 }
 
 .user-menu .notifications .read {
@@ -233,10 +233,18 @@ button.btn {
     padding: 15px 10px;
 }
 
-.topic-post {
+.topic-post, .time-gap, .small-action {
     padding: 0 10px;
 }
 
 .search-container .search-bar .search-query {
     border-radius: 1em;
+}
+
+#suggested-topics {
+    padding: 10px;
+}
+
+#reply-control .toolbar-visible .d-editor-button-bar {
+    display: none;
 }
