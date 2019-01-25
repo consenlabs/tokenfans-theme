@@ -85,23 +85,6 @@ button.btn {
     color: #646464;
 }
 
-#main-outlet.wrap {
-    padding: 0;
-    #topic-title {
-        background: #f8f8f8;
-        padding: 10px 20px;
-        padding-top: 20px;
-    }
-    .topic-post article {
-        border-top: 0;
-    }
-    .posts {
-        .row {
-            padding: 0 10px;
-        }
-    }
-}
-
 .modal-inner-container {
     width: 80%;
     border-radius: 8px;
@@ -113,4 +96,97 @@ button.btn {
 
 .list-container, .list-controls {
     padding: 0 10px;
+}
+
+.flex-row-list {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    justify-content: space-around;
+    margin: 0px;
+    padding: 1rem 0;
+    background: #f8f8f8;
+    li {
+        list-style: none;
+        a {
+            font-size: $font-0;
+            font-weight: bold;
+            color: #17153c;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        a.active {
+            border-bottom: 2px solid black;
+        }
+    }
+}
+
+.user-table {
+    padding: 0 10px;
+}
+
+.mobile-view .mobile-nav.messages-nav, .mobile-view .mobile-nav.notifications-nav, .mobile-view .mobile-nav.activity-nav, .mobile-view .mobile-nav.preferences-nav {
+    position: relative;
+    top: 0px;
+    border-radius: 4px;
+}
+
+.create-topics-notice, .alert-bootstrap-mode {
+    display: none;
+}
+
+.user-main .about {
+    margin-bottom: 0;
+    .secondary {
+        padding: 4px 10px;
+        border-bottom: 0;
+    }
+}
+
+#main-outlet.wrap {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.user-main .about .details .primary .avatar, .user-main .about.collapsed-info .details .primary .avatar {
+    width: 70px;
+    height: 70px;
+}
+
+.user-main .about.collapsed-info .details .primary {
+    h1.username {
+        font-size: $font-up-1;
+        margin-top: 10px;
+    }
+}
+
+.user-main .about .details, .user-main .about.collapsed-info .details {
+    background: white;
+    h2.full-name {
+        display: none;
+    }
+    h1.username {
+        font-size: $font-up-1;
+        margin-top: 10px;
+    }
+}
+
+.user-main .about .details .primary .primary-textual, .user-main .about.collapsed-info .details .primary .primary-textual {
+    flex: unset;
+    margin: 0 10px 5px 10px;
+}
+
+.user-main .about .controls {
+    flex: unset;
+}
+
+.user-main .about .controls a {
+    &.btn-primary {
+        background: #16153c;
+        color: white;
+        min-width: unset;
+        border-radius: 4px;
+        padding: 8px 10px;   
+    }
 }

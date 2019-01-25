@@ -1,0 +1,658 @@
+<script type="text/x-handlebars" data-template-name="components/suggested-topics">
+  <h3 class="suggested-topics-title">{{{suggestedTitle}}}</h3>
+
+  <div class="topics">
+    {{#if topic.isPrivateMessage}}
+      {{basic-topic-list
+        hideCategory="true"
+        showPosters="true"
+        topics=topic.suggestedTopics}}
+    {{else}}
+      {{basic-topic-list topics=topic.suggestedTopics}}
+    {{/if}}
+  </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="topic">
+  {{#discourse-topic multiSelect=multiSelect enteredAt=enteredAt topic=model hasScrolled=hasScrolled}}
+  {{#if model}}
+    {{add-category-class category=model.category}}
+    <div class="container">
+      {{discourse-banner user=currentUser banner=site.banner overlay=hasScrolled hide=model.errorLoading}}
+    </div>
+  {{/if}}
+
+  {{#if showSharedDraftControls}}
+    {{shared-draft-controls topic=model}}
+  {{/if}}
+
+  {{plugin-outlet name="topic-above-post-stream" args=(hash model=model)}}
+
+  {{#if model.postStream.loaded}}
+    {{#if model.postStream.firstPostPresent}}
+      {{#topic-title cancelled="cancelEditingTopic" save="finishedEditingTopic" model=model}}
+        {{#if editingTopic}}
+          <div class="edit-topic-title">
+          {{#if model.isPrivateMessage}}
+            <span class="private-message-glyph">{{d-icon "envelope"}}</span>
+          {{/if}}
+            {{text-field id="edit-title" value=buffered.title maxlength=siteSettings.max_topic_title_length autofocus="true"}}
+            {{#if showCategoryChooser}}
+              {{category-chooser class="small" value=buffered.category_id}}
+            {{/if}}
+
+            {{#if canEditTags}}
+              {{mini-tag-chooser filterable=true tags=buffered.tags categoryId=buffered.category_id}}
+            {{/if}}
+
+            {{plugin-outlet name="edit-topic" args=(hash model=model buffered=buffered)}}
+            <div class="edit-controls">
+              {{d-button action="finishedEditingTopic" class="btn-primary btn-small submit-edit" icon="check"}}
+              {{d-button action="cancelEditingTopic" class="btn-small cancel-edit" icon="times"}}
+
+              {{#if canRemoveTopicFeaturedLink}}
+                <a href {{action "removeFeaturedLink"}} class="remove-featured-link" title="{{i18n "composer.remove_featured_link"}}">
+                  {{d-icon "times-circle"}}
+                  {{featuredLinkDomain}}
+                </a>
+              {{/if}}
+            </div>
+          </div>
+
+        {{else}}
+          <h1>
+            {{#unless model.is_warning}}
+              {{#if siteSettings.enable_personal_messages}}
+                <a href={{pmPath}}>
+                  <span class="private-message-glyph">{{d-icon "envelope"}}</span>
+                </a>
+              {{else}}
+                <span class="private-message-glyph">{{d-icon "envelope"}}</span>
+              {{/if}}
+            {{/unless}}
+
+            {{#if model.details.loaded}}
+              {{topic-status topic=model}}
+              <a href="{{unbound model.url}}" {{action "jumpTop"}} class="fancy-title">
+                {{{model.fancyTitle}}}
+              </a>
+            {{/if}}
+
+            {{#if model.details.can_edit}}
+              <a href {{action "editTopic"}} class="edit-topic" title="{{i18n "edit"}}">{{d-icon "pencil"}}</a>
+            {{/if}}
+          </h1>
+
+          {{topic-category topic=model class="topic-category"}}
+        {{/if}}
+      {{/topic-title}}
+    {{/if}}
+
+
+    <div class="container posts">
+      <div class='selected-posts {{unless multiSelect 'hidden'}}'>
+        {{partial "selected-posts"}}
+      </div>
+
+      {{#topic-navigation topic=model jumpToDate=(action "jumpToDate") jumpToIndex=(action "jumpToIndex") as |info|}}
+        {{#if info.renderTimeline}}
+          {{#if info.renderAdminMenuButton}}
+            {{topic-admin-menu-button
+              topic=model
+              fixed="true"
+              toggleMultiSelect=(action "toggleMultiSelect")
+              hideMultiSelect=(action "hideMultiSelect")
+              deleteTopic=(action "deleteTopic")
+              recoverTopic=(action "recoverTopic")
+              toggleClosed=(action "toggleClosed")
+              toggleArchived=(action "toggleArchived")
+              toggleVisibility=(action "toggleVisibility")
+              showTopicStatusUpdate=(action "topicRouteAction" "showTopicStatusUpdate")
+              showFeatureTopic=(action "topicRouteAction" "showFeatureTopic")
+              showChangeTimestamp=(action "topicRouteAction" "showChangeTimestamp")
+              resetBumpDate=(action "resetBumpDate")
+              convertToPublicTopic=(action "convertToPublicTopic")
+              convertToPrivateMessage=(action "convertToPrivateMessage")}}
+          {{/if}}
+
+          {{topic-timeline
+            topic=model
+            notificationLevel=model.details.notification_level
+            prevEvent=info.prevEvent
+            fullscreen=info.topicProgressExpanded
+            enteredIndex=enteredIndex
+            loading=model.postStream.loading
+            jumpToPost=(action "jumpToPost")
+            jumpTop=(action "jumpTop")
+            jumpBottom=(action "jumpBottom")
+            jumpToPostPrompt=(action "jumpToPostPrompt")
+            jumpToIndex=(action "jumpToIndex")
+            replyToPost=(action "replyToPost")
+            toggleMultiSelect=(action "toggleMultiSelect")
+            hideMultiSelect=(action "hideMultiSelect")
+            deleteTopic=(action "deleteTopic")
+            recoverTopic=(action "recoverTopic")
+            toggleClosed=(action "toggleClosed")
+            toggleArchived=(action "toggleArchived")
+            toggleVisibility=(action "toggleVisibility")
+            showTopicStatusUpdate=(action "topicRouteAction" "showTopicStatusUpdate")
+            showFeatureTopic=(action "topicRouteAction" "showFeatureTopic")
+            showChangeTimestamp=(action "topicRouteAction" "showChangeTimestamp")
+            resetBumpDate=(action "resetBumpDate")
+            convertToPublicTopic=(action "convertToPublicTopic")
+            convertToPrivateMessage=(action "convertToPrivateMessage")}}
+        {{else}}
+          {{#topic-progress
+            prevEvent=info.prevEvent
+            topic=model
+            expanded=info.topicProgressExpanded
+            jumpToPost=(action "jumpToPost")}}
+            {{#if info.renderAdminMenuButton}}
+              {{topic-admin-menu-button
+                topic=model
+                openUpwards="true"
+                rightSide="true"
+                toggleMultiSelect=(action "toggleMultiSelect")
+                hideMultiSelect=(action "hideMultiSelect")
+                deleteTopic=(action "deleteTopic")
+                recoverTopic=(action "recoverTopic")
+                toggleClosed=(action "toggleClosed")
+                toggleArchived=(action "toggleArchived")
+                toggleVisibility=(action "toggleVisibility")
+                showTopicStatusUpdate=(action "topicRouteAction" "showTopicStatusUpdate")
+                showFeatureTopic=(action "topicRouteAction" "showFeatureTopic")
+                showChangeTimestamp=(action "topicRouteAction" "showChangeTimestamp")
+                resetBumpDate=(action "resetBumpDate")
+                convertToPublicTopic=(action "convertToPublicTopic")
+                convertToPrivateMessage=(action "convertToPrivateMessage")}}
+            {{/if}}
+          {{/topic-progress}}
+        {{/if}}
+      {{/topic-navigation}}
+
+      <div class="row">
+        <section class="topic-area" id="topic" data-topic-id="{{unbound model.id}}">
+
+          <div class="posts-wrapper">
+            {{conditional-loading-spinner condition=model.postStream.loadingAbove}}
+
+            {{plugin-outlet name="topic-above-posts" args=(hash model=model)}}
+
+            {{#unless model.postStream.loadingFilter}}
+              {{scrolling-post-stream
+                posts=postsToRender
+                canCreatePost=model.details.can_create_post
+                multiSelect=multiSelect
+                selectedPostsCount=selectedPostsCount
+                selectedQuery=selectedQuery
+                gaps=model.postStream.gaps
+                showFlags=(action "showPostFlags")
+                editPost=(action "editPost")
+                showHistory=(action "topicRouteAction" "showHistory")
+                showLogin=(action "topicRouteAction" "showLogin")
+                showRawEmail=(action "topicRouteAction" "showRawEmail")
+                deletePost=(action "deletePost")
+                recoverPost=(action "recoverPost")
+                expandHidden=(action "expandHidden")
+                newTopicAction=(action "replyAsNewTopic")
+                toggleBookmark=(action "toggleBookmark")
+                togglePostType=(action "togglePostType")
+                rebakePost=(action "rebakePost")
+                changePostOwner=(action "changePostOwner")
+                grantBadge=(action "grantBadge")
+                lockPost=(action "lockPost")
+                unlockPost=(action "unlockPost")
+                unhidePost=(action "unhidePost")
+                replyToPost=(action "replyToPost")
+                toggleWiki=(action "toggleWiki")
+                toggleSummary=(action "toggleSummary")
+                removeAllowedUser=(action "removeAllowedUser")
+                removeAllowedGroup=(action "removeAllowedGroup")
+                showInvite=(action "topicRouteAction" "showInvite")
+                topVisibleChanged=(action "topVisibleChanged")
+                currentPostChanged=(action "currentPostChanged")
+                currentPostScrolled=(action "currentPostScrolled")
+                bottomVisibleChanged=(action "bottomVisibleChanged")
+                togglePostSelection=(action "togglePostSelection")
+                selectReplies=(action "selectReplies")
+                selectBelow=(action "selectBelow")
+                fillGapBefore=(action "fillGapBefore")
+                fillGapAfter=(action "fillGapAfter")}}
+            {{/unless}}
+
+            {{conditional-loading-spinner condition=model.postStream.loadingBelow}}
+          </div>
+          <div id="topic-bottom"></div>
+
+          {{#conditional-loading-spinner condition=model.postStream.loadingFilter}}
+            {{#if loadedAllPosts}}
+
+              {{#if model.pending_posts_count}}
+                <div class="has-pending-posts">
+                  {{{i18n "queue.has_pending_posts" count=model.pending_posts_count}}}
+
+                  {{#if currentUser.show_queued_posts}}
+                    {{#link-to "queued-posts"}}
+                      {{d-icon "check"}}
+                      {{i18n "queue.view_pending"}}
+                    {{/link-to}}
+                  {{/if}}
+                </div>
+              {{/if}}
+
+              {{#if model.private_topic_timer.execute_at}}
+                {{topic-timer-info
+                    topicClosed=model.closed
+                    statusType=model.private_topic_timer.status_type
+                    executeAt=model.private_topic_timer.execute_at
+                    duration=model.private_topic_timer.duration}}
+              {{/if}}
+
+              {{topic-timer-info
+                  topicClosed=model.closed
+                  statusType=model.topic_timer.status_type
+                  executeAt=model.topic_timer.execute_at
+                  basedOnLastPost=model.topic_timer.based_on_last_post
+                  duration=model.topic_timer.duration
+                  categoryId=model.topic_timer.category_id}}
+
+              {{#if session.showSignupCta}}
+                {{! replace "Log In to Reply" with the infobox }}
+                {{signup-cta}}
+              {{else}}
+                <div id="topic-footer-buttons">
+                  {{d-button icon="reply" class="btn-primary pull-right" action="showLogin" label="topic.reply.title"}}
+                </div>
+              {{/if}}
+
+              {{#if showSelectedPostsAtBottom}}
+                <div class='selected-posts {{unless multiSelect 'hidden'}}'>
+                  {{partial "selected-posts"}}
+                </div>
+              {{/if}}
+
+              {{plugin-outlet name="topic-above-suggested" args=(hash model=model)}}
+
+              {{#if model.suggestedTopics.length}}
+                {{suggested-topics topic=model}}
+              {{/if}}
+            {{/if}}
+          {{/conditional-loading-spinner}}
+
+        </section>
+      </div>
+
+    </div>
+  {{else}}
+    <div class="container">
+      {{#conditional-loading-spinner condition=noErrorYet}}
+        {{#if model.notFoundHtml}}
+          <div class="not-found">{{{model.notFoundHtml}}}</div>
+        {{else}}
+          <div class="topic-error">
+            <div>{{model.message}}</div>
+            {{#if model.noRetry}}
+              {{#unless currentUser}}
+                {{d-button action="showLogin" class="btn-primary topic-retry" icon="user" label="log_in"}}
+              {{/unless}}
+            {{else}}
+              {{d-button action="retryLoading" class="btn-primary topic-retry" icon="refresh" label="errors.buttons.again"}}
+            {{/if}}
+          </div>
+          {{conditional-loading-spinner condition=retrying}}
+        {{/if}}
+      {{/conditional-loading-spinner}}
+    </div>
+  {{/if}}
+
+  {{share-popup topic=model replyAsNewTopic="replyAsNewTopic"}}
+
+  {{#if currentUser.enable_quoting}}
+    {{quote-button quoteState=quoteState selectText=(action "selectText")}}
+  {{/if}}
+{{/discourse-topic}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="mobile/components/basic-topic-list">
+  {{#conditional-loading-spinner condition=loading}}
+    {{#if topics}}
+      <table class="topic-list">
+        <tbody>
+        {{#each topics as |t|}}
+          <tr class="topic-list-item {{if t.archived 'archived'}} {{if t.visited 'visited'}}" data-topic-id={{t.id}}>
+            <td>
+              <div class='main-link'>
+                {{topic-status topic=t}}
+                {{topic-link t}}
+                {{#if t.unseen}}
+                  <span class="badge-notification new-topic"></span>
+                {{/if}}
+                {{#if t.hasExcerpt}}
+                  <div class="topic-excerpt">
+                    {{{t.excerpt}}}
+                    {{#if t.excerptTruncated}}
+                      {{#unless t.canClearPin}}<a href="{{unbound t.url}}">{{i18n 'read_more'}}</a>{{/unless}}
+                    {{/if}}
+                    {{#if t.canClearPin}}
+                      <a href {{action "clearPin" t}} title="{{i18n 'topic.clear_pin.help'}}">{{i18n 'topic.clear_pin.title'}}</a>
+                    {{/if}}
+                  </div>
+                {{/if}}
+              </div>
+              <div class='pull-right'>
+                {{raw "list/post-count-or-badges" topic=t postBadgesEnabled="true"}}
+              </div>
+              <div class='clearfix'></div>
+              <div class="topic-item-stats clearfix">
+                {{discourse-tags t mode="list" tagsForUser=tagsForUser}}
+                <div class="pull-right">
+                  {{raw "list/activity-column" topic=t tagName="div" class="num activity last"}}
+                  <a href="{{t.lastPostUrl}}" title='{{i18n 'last_post'}}: {{{raw-date t.bumped_at}}}'>{{t.last_poster_username}}</a>
+                </div>
+                {{#unless hideCategory}}
+                  <div class='category'>
+                    {{category-link t.category}}
+                  </div>
+                {{/unless}}
+                {{#if showParticipants}}
+                  <div class='participants'>
+                    {{#each participants as |p|}}
+                      <a href="{{unbound p.user.path}}" class="{{unbound p.extras}}">{{avatar p usernamePath="user.username" imageSize="small"}}</a>
+                    {{/each}}
+                  </div>
+                {{/if}}
+                <div class="clearfix"></div>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <div class='alert alert-info'>
+        {{i18n 'choose_topic.none_found'}}
+      </div>
+    {{/if}}
+  {{/conditional-loading-spinner}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="discovery/topics">
+  {{bulk-select-button selected=selected action="refresh" category=category}}
+
+  {{#discovery-topics-list model=model refresh="refresh" incomingCount=topicTrackingState.incomingCount}}
+    {{#if top}}
+      <div class='top-lists'>
+        {{period-chooser period=period action="changePeriod"}}
+      </div>
+    {{else}}
+      {{#if topicTrackingState.hasIncoming}}
+        <div class="show-more {{if hasTopics 'has-topics'}}">
+          <div class='alert alert-info clickable' {{action "showInserted"}}>
+            <a tabindex="0" href="" {{action "showInserted"}}>
+              {{count-i18n key="topic_count_" suffix=topicTrackingState.filter count=topicTrackingState.incomingCount}}
+            </a>
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+  
+    {{#if hasTopics}}
+      {{topic-list
+        highlightLastVisited=true
+        top=top
+        showTopicPostBadges=showTopicPostBadges
+        showPosters=true
+        canBulkSelect=canBulkSelect
+        changeSort="changeSort"
+        toggleBulkSelect="toggleBulkSelect"
+        hideCategory=model.hideCategory
+        order=order
+        ascending=ascending
+        bulkSelectEnabled=bulkSelectEnabled
+        selected=selected
+        expandGloballyPinned=expandGloballyPinned
+        expandAllPinned=expandAllPinned
+        category=category
+        topics=model.topics
+        discoveryList=true}}
+    {{/if}}
+  {{/discovery-topics-list}}
+  
+  <footer class='topic-list-bottom'>
+  
+  </footer>  
+</script>
+
+<!-- <script type="text/x-handlebars" data-template-name="mobile/components/mobile-nav">
+  {{yield}}
+</script> -->
+
+
+<script type="text/x-handlebars" data-template-name="user">
+  <div class="container {{if viewingSelf 'viewing-self'}}">
+    {{#d-section class="user-main"}}
+  
+      <section class="{{if collapsedInfo 'collapsed-info'}} about {{if hasProfileBackground 'has-background' 'no-background'}}"  style={{model.profileBackground}}>
+      {{#unless collapsedInfo}}
+        {{#if showStaffCounters}}
+          <div class='staff-counters'>
+            {{#if model.number_of_flags_given}}
+              <div><span class="helpful-flags">{{model.number_of_flags_given}}</span>{{i18n 'user.staff_counters.flags_given'}}</div>
+            {{/if}}
+            {{#if model.number_of_flagged_posts}}
+              <div>
+                {{#link-to 'user.flaggedPosts' model}}
+                  <span class="flagged-posts">{{model.number_of_flagged_posts}}</span>{{i18n 'user.staff_counters.flagged_posts'}}
+                {{/link-to}}
+              </div>
+            {{/if}}
+            {{#if model.number_of_deleted_posts}}
+              <div>
+                {{#link-to 'user.deletedPosts' model}}
+                  <span class="deleted-posts">{{model.number_of_deleted_posts}}</span>{{i18n 'user.staff_counters.deleted_posts'}}
+                {{/link-to}}
+              </div>
+            {{/if}}
+            {{#if model.number_of_suspensions}}
+              <div>
+                <a {{action "showSuspensions"}}>
+                  <span class="suspensions">{{model.number_of_suspensions}}</span>{{i18n 'user.staff_counters.suspensions'}}
+                </a>
+              </div>
+            {{/if}}
+            {{#if model.warnings_received_count}}
+              <div><span class="warnings-received">{{model.warnings_received_count}}</span>{{i18n 'user.staff_counters.warnings_received'}}</div>
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/unless}}
+  
+        <div class='profile-image'></div>
+        <div class='details'>
+          <div class='primary'>
+            {{user-profile-avatar user=model}}
+            <section class='controls'>
+              <ul>
+                {{#if model.can_send_private_message_to_user}}
+                <li>
+                  <a class='btn btn-primary compose-pm' {{action "composePrivateMessage" model}}>
+                    {{d-icon "envelope"}}
+                    {{i18n 'user.private_message'}}
+                  </a>
+                </li>
+                {{/if}}
+                {{#if currentUser.staff}}
+                  <li><a href={{model.adminPath}} class="btn">{{d-icon "wrench"}}{{i18n 'admin.user.show_admin_profile'}}</a></li>
+                {{/if}}
+                {{plugin-outlet name="user-profile-controls"
+                                connectorTagName="li"
+                                args=(hash model=model)}}
+  
+                {{#if canExpandProfile}}
+                  <li>
+                    {{#if collapsedInfo}}
+                      <a {{action "expandProfile"}} href class="btn">
+                        {{d-icon "angle-double-down"}} {{i18n 'user.expand_profile'}}
+                      </a>
+                    {{else}}
+                      <a {{action "collapseProfile"}} href class="btn">
+                        {{d-icon "angle-double-up"}} {{i18n 'user.collapse_profile'}}
+                      </a>
+                    {{/if}}
+                  </li>
+                {{/if}}
+              </ul>
+            </section>
+  
+            <div class="primary-textual">
+              <h1 class="{{if nameFirst "full-name" "username"}}">{{if nameFirst model.name (format-username model.username)}} {{user-status model currentUser=currentUser}}</h1>
+              <h2 class="{{if nameFirst "username" "full-name"}}">{{#if nameFirst}}{{model.username}}{{else}}{{model.name}}{{/if}}</h2>
+              {{#if model.staged}}
+                <h2 class="staged">{{i18n 'user.staged'}}</h2>
+              {{/if}}
+              {{#if model.title}}
+                <h3>{{model.title}}</h3>
+              {{/if}}
+              {{plugin-outlet name="user-post-names" args=(hash model=model)}}
+              <h3 class="location-and-website">
+              {{#if model.location}}{{d-icon "map-marker"}} {{model.location}}{{/if}}
+              {{#if model.website_name}}
+                {{d-icon "globe"}}
+                {{#if linkWebsite}}
+                  <a href={{model.website}} rel={{unless removeNoFollow 'nofollow noopener'}} target="_blank">{{model.website_name}}</a>
+                {{else}}
+                  <span title={{model.website}}>{{model.website_name}}</span>
+                {{/if}}
+              {{/if}}
+              {{plugin-outlet name="user-location-and-website" args=(hash model=model)}}
+              </h3>
+  
+              <div class='bio'>
+                {{#if model.suspended}}
+                  <div class='suspended'>
+                    {{d-icon "ban"}}
+                    <b>
+                      {{#if model.suspendedForever}}
+                        {{i18n 'user.suspended_permanently'}}
+                      {{else}}
+                        {{i18n 'user.suspended_notice' date=model.suspendedTillDate}}
+                      {{/if}}
+                    </b><br>
+                    {{#if model.suspend_reason}}
+                      <b>{{i18n 'user.suspended_reason'}}</b> {{model.suspend_reason}}
+                    {{/if}}
+                  </div>
+                {{/if}}
+                {{#if isNotSuspendedOrIsStaff}}
+                  {{{model.bio_cooked}}}
+                {{/if}}
+              </div>
+  
+              {{#if publicUserFields}}
+                <div class="public-user-fields">
+                  {{#each publicUserFields as |uf|}}
+                    {{#if uf.value}}
+                      <div class="public-user-field {{uf.field.dasherized_name}}">
+                        <span class="user-field-name">{{uf.field.name}}</span>:
+                        <span class="user-field-value">{{uf.value}}</span>
+                      </div>
+                    {{/if}}
+                  {{/each}}
+  
+                  {{plugin-outlet name="user-profile-public-fields"
+                                  args=(hash publicUserFields=publicUserFields
+                                        model=model)}}
+                </div>
+              {{/if}}
+  
+              {{plugin-outlet name="user-profile-primary" args=(hash model=model)}}
+            </div>
+          </div>
+          <div style='clear: both'></div>
+        </div>
+  
+        {{#unless collapsedInfo}}
+        <div class='secondary'>
+          <dl>
+            {{#if model.created_at}}
+              <div><dt>{{i18n 'user.created'}}</dt><dd>{{bound-date model.created_at}}</dd></div>
+            {{/if}}
+            {{#if model.last_posted_at}}
+              <div><dt>{{i18n 'user.last_posted'}}</dt><dd>{{bound-date model.last_posted_at}}</dd></div>
+            {{/if}}
+            {{#if model.last_seen_at}}
+              <div><dt>{{i18n 'user.last_seen'}}</dt><dd>{{bound-date model.last_seen_at}}</dd></div>
+            {{/if}}
+            <div><dt>{{i18n 'views'}}</dt><dd>{{model.profile_view_count}}</dd></div>
+            {{#if model.invited_by}}
+              <div><dt class="invited-by">{{i18n 'user.invited_by'}}</dt><dd class="invited-by">{{#link-to 'user' model.invited_by}}{{model.invited_by.username}}{{/link-to}}</dd></div>
+            {{/if}}
+            {{#if model.trust_level}}
+              <div><dt class="trust-level">{{i18n 'user.trust_level'}}</dt><dd class="trust-level">{{model.trustLevel.name}}</dd></div>
+            {{/if}}
+            {{#if canCheckEmails}}
+              <div><dt>{{i18n 'user.email.title'}}</dt>
+              <dd title={{model.email}}>
+                {{#if model.email}}
+                  {{model.email}}
+                {{else}}
+                  {{d-button action="checkEmail" actionParam=model icon="envelope-o" label="admin.users.check_email.text" class="btn-primary"}}
+                {{/if}}
+              </dd>
+              </div>
+            {{/if}}
+  
+            {{#if model.displayGroups}}
+              <div><dt class="groups">{{i18n 'groups.title' count=model.displayGroups.length}}</dt>
+              <dd class='groups'>
+                {{#each model.displayGroups as |group|}}
+                  <span>{{#link-to 'group' group.name class="group-link"}}{{group.name}}{{/link-to}}</span>
+                {{/each}}
+  
+                {{#link-to "groups" (query-params username=model.username)}}
+                  ...
+                {{/link-to}}
+              </dd>
+              </div>
+            {{/if}}
+  
+            {{#if canDeleteUser}}
+              <div>{{d-button action="adminDelete" icon="exclamation-triangle" label="user.admin_delete" class="btn-danger"}}</div>
+            {{/if}}
+          </dl>
+          {{plugin-outlet name="user-profile-secondary" args=(hash model=model)}}
+        </div>
+        {{/unless}}
+      </section>
+  
+      <ul class="flex-row-list">
+        <li>{{#link-to 'user.summary'}}{{i18n 'user.summary.title'}}{{/link-to}}</li>
+        <li>{{#link-to 'userActivity'}}{{i18n 'user.activity_stream'}}{{/link-to}}</li>
+        {{#if showNotificationsTab}}
+          <li>
+            {{#link-to 'userNotifications'}}
+              {{i18n 'user.notifications'}}
+            {{/link-to}}
+          </li>
+        {{/if}}
+        {{#if showPrivateMessages}}
+          <li>{{#link-to 'userPrivateMessages'}}{{i18n 'user.private_messages'}}{{/link-to}}</li>
+        {{/if}}
+        {{plugin-outlet name="user-main-nav" tagName='' connectorTagName='li' args=(hash model=model)}}
+        {{#if model.can_edit}}
+          <li>{{#link-to 'preferences'}}{{i18n 'user.preferences'}}{{/link-to}}</li>
+        {{/if}}
+        {{#if showBadges}}
+          <li>{{#link-to 'user.badges'}}{{i18n 'badges.title'}}{{/link-to}}</li>
+        {{/if}}
+      </ul>
+  
+      <div class='user-table'>
+        <div class='wrapper'>
+          {{outlet}}
+        </div>
+      </div>
+  
+    {{/d-section}}
+  </div>  
+</script>
