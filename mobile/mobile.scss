@@ -60,16 +60,6 @@
     background-color: unset;
 }
 
-button.btn {
-    background: #16153c;
-    color: white;
-    border-radius: 4px;
-}
-button.btn:active {
-    background: lighten($color: #16153c, $amount: 10);
-    color: white;
-}
-
 .badge-wrapper.bullet .badge-category-parent-bg, .badge-wrapper.bullet .badge-category-bg {
     display: none;
 }
