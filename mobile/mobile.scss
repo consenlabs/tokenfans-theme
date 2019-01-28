@@ -65,6 +65,11 @@ button.btn {
     color: white;
     border-radius: 4px;
 }
+button.btn:active {
+    background: lighten($color: #16153c, $amount: 10);
+    color: white;
+}
+
 .badge-wrapper.bullet .badge-category-parent-bg, .badge-wrapper.bullet .badge-category-bg {
     display: none;
 }
@@ -247,4 +252,10 @@ button.btn {
 
 #reply-control .toolbar-visible .d-editor-button-bar {
     display: none;
+}
+
+#topic-footer-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
 }
