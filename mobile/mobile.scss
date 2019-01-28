@@ -259,3 +259,48 @@ button.btn:active {
     flex-flow: row nowrap;
     justify-content: flex-end;
 }
+
+.list-controls .nav-pills {
+    display: none;
+}
+
+ol.category-breadcrumb {
+    flex: 1;
+    margin-right: 25%;
+}
+
+.select-kit.combo-box.category-drop .select-kit-body {
+    width: unset !important;
+    min-width: 200px !important;
+    border-radius: 8px;
+    padding: 0 10px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
+    .select-kit-row {
+        padding: 10px;
+        border-bottom: 1px solid rgba(22, 21, 60, 0.2);
+        &:last-child {
+            border-bottom: 0;
+        }
+        span {
+            color: #16153c;
+            font-weight: normal;
+        }
+        &.is-selected, &.is-highlighted {
+            background: white;
+            span {
+                color: #008cd5;
+            }
+        }
+    }
+}
+
+.select-kit.combo-box.category-drop .category-drop-header {
+    border-radius: 4px;
+}
+
+ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
+    .category-name {
+        color: #16153c;
+    }
+}
+
