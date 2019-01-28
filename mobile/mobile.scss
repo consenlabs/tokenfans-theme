@@ -303,4 +303,23 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
         color: #16153c;
     }
 }
+#imtoken-qrcode {
+    padding-top: 80px;
+    .description h1 {
+        display: none;
+    }
 
+    .qrcode-wrap .qrcode {
+        display: none;
+    }
+    
+    .login-via-imtoken {
+        background: black;
+        color: white;
+        font-size: 17px;
+        line-height: 24px;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+    }
+}
