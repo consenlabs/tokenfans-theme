@@ -1,16 +1,71 @@
 
 <script type="text/discourse-plugin" version="0.8">
-  $(document).ready(function() {
-    const user = api.getCurrentUser();
-    if (!user || !user.admin) {
-      $('#toggle-hamburger-menu').hide();
+  api.reopenWidget("header-icons", {
+    html(attrs) {
+      if (this.siteSettings.login_required && !this.currentUser) {
+        return [];
+      }
+  
+      const hamburger = this.attach("header-dropdown", {
+        title: "hamburger_menu",
+        icon: "bars",
+        iconId: "toggle-hamburger-menu",
+        active: attrs.hamburgerVisible,
+        action: "toggleHamburger",
+        href: "",
+        contents() {
+          if (!attrs.flagCount) {
+            return;
+          }
+          return h(
+            "div.badge-notification.flagged-posts",
+            {
+              attributes: {
+                title: I18n.t("notifications.total_flagged")
+              }
+            },
+            attrs.flagCount
+          );
+        }
+      });
+  
+      const search = this.attach("header-dropdown", {
+        title: "search.title",
+        icon: "search",
+        iconId: "search-button",
+        action: "toggleSearchMenu",
+        active: attrs.searchVisible,
+        href: Discourse.getURL("/search")
+      });
+  
+      const icons = [search];
+      
+      if (this.currentUser && this.currentUser.admin) {
+        icons.push(hamburger);
+      }
+
+      if (attrs.user) {
+        icons.push(
+          this.attach("user-dropdown", {
+            active: attrs.userVisible,
+            action: "toggleUserMenu",
+            ringBackdrop: attrs.ringBackdrop,
+            user: attrs.user
+          })
+        );
+      }
+  
+      return icons;
     }
-    
-    api.modifyClass("component:bread-crumbs", {
-      hidden: function() {
-        return false;
-      }.property("category")
-    });
+  });
+  
+  api.modifyClass("component:bread-crumbs", {
+    hidden: function() {
+      return false;
+    }.property("category")
+  });
+  
+  $(document).ready(function() {
     $('.category-breadcrumb').show();
   });
 </script>

@@ -396,3 +396,12 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
 #ember1059 {
     display: none;
 }
+
+.anon .topic-list-main-link a.title:visited:not(.badge-notification), .anon .topic-list .main-link a.title:visited:not(.badge-notification), .topic-list .anon .main-link a.title:visited:not(.badge-notification) {
+    color: transparent;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
