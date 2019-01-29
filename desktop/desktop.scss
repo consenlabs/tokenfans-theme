@@ -24,6 +24,11 @@ button.btn:active {
     border-left: 1px solid #e7e7ea;
     background: white;
     padding-left: 60px;
+    ul {
+      li {
+        margin: 10px 0;
+      }
+    }
   }
 
   .qrcode-wrap {
@@ -72,4 +77,8 @@ button.btn:active {
       border-radius: 4px;
     }
   }
+}
+
+.badge-wrapper.box span.badge-category-bg, .badge-wrapper.box span.badge-category-parent-bg {
+  border-radius: 4px;
 }

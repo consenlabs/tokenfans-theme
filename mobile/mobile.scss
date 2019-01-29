@@ -1,14 +1,49 @@
 @import "common/foundation/variables";
 
+a, title, table, h3, p, span {
+    word-break: break-all;
+}
 
-button.btn {
+button.btn, .btn[href] {
     background: #16153c;
     color: white;
     border-radius: 4px;
+    padding: 8px 14px;
+    font-size: $font-0;
+    .d-button-label, i {
+        color: white !important;
+    }
 }
 button.btn:active {
     background: lighten($color: #16153c, $amount: 10);
     color: white;
+    .d-button-label {
+        color: white !important;
+    }
+}
+
+.btn[disabled], .btn.disabled {
+    display: none;
+}
+
+.user-navigation {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    ul {
+        margin-bottom: 10px;
+    }
+    button {
+        margin-top: 10px;
+    }
+    .user-archive {
+        display: none;
+    }
+}
+
+section.user-right {
+    margin-top: 10px;
 }
 
 .topic-list {
@@ -48,7 +83,7 @@ button.btn:active {
     border-radius: 8px;
     width: unset;
     min-width: 80px;
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .list-controls .nav-pills .drop li a {
@@ -101,7 +136,7 @@ button.btn:active {
 }
 
 .list-container, .list-controls {
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .flex-row-list {
@@ -129,7 +164,7 @@ button.btn:active {
 }
 
 .user-table {
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .mobile-view .mobile-nav.messages-nav, .mobile-view .mobile-nav.notifications-nav, .mobile-view .mobile-nav.activity-nav, .mobile-view .mobile-nav.preferences-nav {
@@ -149,12 +184,19 @@ button.btn:active {
         border-bottom: 0;
 
         dt, dd {
-            font-size: $font-down-2;
-            color: #17153c;
+            font-size: $font-down-1;
+            color: rgba(#17153c, 0.5);
+        }
+        dt {
+            word-break: keep-all;
+        }
+        dd {
+            margin: 0 30px 0 0;
+            word-break: break-all;
         }
         span {
             font-size: $font-0;
-            color: #17153c;
+            color: rgba(#17153c, 0.5);
         }
     }
 }
@@ -228,7 +270,7 @@ button.btn:active {
 }
 
 .search-container {
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .search-advanced-title {
@@ -236,11 +278,24 @@ button.btn:active {
 }
 
 #topic-title {
-    padding: 15px 10px;
+    padding: 15px 20px;
+    background: #f8f8f8;
 }
 
 .topic-post, .time-gap, .small-action {
-    padding: 0 10px;
+    padding: 0 20px;
+}
+
+.topic-post:first-child article {
+    border-top: 0;
+}
+
+.post-stream {
+    padding-bottom: 0;
+}
+
+.topic-map {
+    display: none;
 }
 
 .search-container .search-bar .search-query {
@@ -248,7 +303,8 @@ button.btn:active {
 }
 
 #suggested-topics {
-    padding: 10px;
+    padding: 10px 20px;
+    margin-top: 50px;
 }
 
 #reply-control .toolbar-visible .d-editor-button-bar {
@@ -323,4 +379,20 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
         border-radius: 8px;
         width: 80%;
     }
+}
+
+#topic-progress {
+    display: none;
+}
+
+.topic-post:last-of-type {
+    padding-bottom: 0;
+}
+
+.control-group.pref-name {
+    display: none;
+}
+
+#ember1059 {
+    display: none;
 }

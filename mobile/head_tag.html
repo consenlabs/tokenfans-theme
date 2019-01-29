@@ -5,6 +5,7 @@
     if (!user || !user.admin) {
       $('#toggle-hamburger-menu').hide();
     }
+    
     api.modifyClass("component:bread-crumbs", {
       hidden: function() {
         return false;
