@@ -362,8 +362,15 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
 }
 #imtoken-qrcode {
     padding-top: 80px;
-    .description h1 {
-        display: none;
+    .description {
+        h1 {
+            display: none;
+        }
+        ul {
+            li {
+                margin: 10px 0;
+            }
+        }
     }
 
     .qrcode-wrap .qrcode {
@@ -375,7 +382,7 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
         color: white;
         font-size: 17px;
         line-height: 24px;
-        padding: 20px;
+        padding: 16px;
         border-radius: 8px;
         width: 80%;
     }
@@ -429,4 +436,8 @@ a {
   
   .search-container .search-notice {
     margin-top: 0;
+  }
+
+  .search-container .search-advanced .search-actions, .search-container .search-advanced .search-notice, .search-container .search-advanced .search-results, .search-container .search-advanced .search-title, .search-container .search-advanced .search-bar {
+      margin-bottom: 0;
   }
