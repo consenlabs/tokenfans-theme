@@ -418,3 +418,15 @@ a {
 .select-kit.combo-box .select-kit-filter {
     display: none;
 }
+
+.search-container .search-advanced .search-title {
+    display: none;
+  }
+  
+  .search-container .search-advanced .search-info {
+    align-items: flex-start;
+  }
+  
+  .search-container .search-notice {
+    margin-top: 0;
+  }

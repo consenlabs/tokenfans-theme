@@ -82,3 +82,17 @@ button.btn:active {
 .badge-wrapper.box span.badge-category-bg, .badge-wrapper.box span.badge-category-parent-bg {
   border-radius: 4px;
 }
+
+
+.badge-wrapper.box span.badge-category-parent-bg {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.badge-wrapper.box span.badge-category-parent-bg+.badge-category-bg+.badge-category {
+  margin-left: 0;
+}
+
+.select-kit.combo-box .select-kit-filter {
+  display: none;
+}
