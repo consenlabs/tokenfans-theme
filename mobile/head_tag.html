@@ -139,17 +139,6 @@
             .then(resolve, reject);
         }
   
-        // we need a draft sequence for the composer to work
-        if (opts.draftSequence === undefined) {
-          return Draft.get(opts.draftKey)
-            .then(function(data) {
-              opts.draftSequence = data.draft_sequence;
-              opts.draft = data.draft;
-              self._setModel(composerModel, opts);
-            })
-            .then(resolve, reject);
-        }
-  
         if (composerModel) {
           if (composerModel.get("action") !== opts.action) {
             composerModel.setProperties({ unlistTopic: false, whisper: false });

@@ -135,6 +135,10 @@ section.user-right {
     color: #646464;
 }
 
+.d-editor-button-bar {
+    display: none;
+}
+
 .modal-inner-container {
     width: 80%;
     border-radius: 8px;
@@ -540,7 +544,7 @@ align-items: flex-start;
     display: none;
 }
 
-#reply-control .category-input {
+#reply-control .category-input, #reply-control .title-input {
     padding: 6px 0;
     border-bottom: 1px solid rgba(22, 21, 60, 0.15);
     border-top: 1px solid rgba(22, 21, 60, 0.15);
@@ -587,3 +591,4 @@ align-items: flex-start;
 .list-controls {
     margin: 0;
 }
+
