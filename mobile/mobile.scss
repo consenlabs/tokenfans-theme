@@ -1,5 +1,14 @@
 @import "common/foundation/variables";
 
+html * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
+
 a, title, table, h3, p, span {
     word-break: break-all;
 }
@@ -408,10 +417,6 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
     color: transparent;
 }
 
-a {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-touch-callout: none;
-}
 
 .badge-wrapper.box span.badge-category-parent-bg {
     width: 100%;
