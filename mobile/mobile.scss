@@ -172,14 +172,77 @@ section.user-right {
     }
 }
 
+.mobile-view .mobile-nav .d-icon-caret-down {
+    right: 16px;
+}
+
 .user-table {
     padding: 0 20px;
+    margin-top: 0;
+
+    .user-navigation {
+        width: 100vw;
+        position: relative;
+        left: -20px;
+
+        .preferences-nav {
+            padding: 0 10px;
+        }
+
+        .mobile-view .mobile-nav>li>a {
+            padding: 8px 20px;
+        }
+
+    }
+    .form-vertical .control-label {
+        font-size: $font-0;
+        font-weight: normal;
+        color: rgba(#16153c, 0.5);
+    }
+
+    .save-button.control-group {
+        color: white;
+        border: 0 !important;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        max-width: unset;
+
+        .controls {
+            display: inline-block;
+            background: black;
+            border: 0;
+            margin: 0;
+        }
+    }
+
+    .form-vertical .controls {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+        .avatar {
+            width: 70px;
+            height: 70px;
+        }
+        .instructions {
+            display: none;
+        }
+    }
+    .control-group {
+        border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+    }
 }
 
 .mobile-view .mobile-nav.messages-nav, .mobile-view .mobile-nav.notifications-nav, .mobile-view .mobile-nav.activity-nav, .mobile-view .mobile-nav.preferences-nav {
     position: relative;
     top: 0px;
     border-radius: 4px;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid rgba(22, 21, 60, 0.15);
 }
 
 .create-topics-notice, .alert-bootstrap-mode {
@@ -425,10 +488,12 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
 .badge-wrapper.box span.badge-category-parent-bg {
     width: 100%;
     border-radius: 4px;
+    background: transparent;
 }
 
 .badge-wrapper.box span.badge-category-parent-bg+.badge-category-bg+.badge-category {
     margin-left: 0;
+    background: transparent;
 }
 
 .select-kit.combo-box .select-kit-filter {
@@ -515,4 +580,8 @@ align-items: flex-start;
 
 .select-kit.combo-box .select-kit-header.is-focused {
     box-shadow: none;
+}
+
+.list-controls {
+    margin: 0;
 }
