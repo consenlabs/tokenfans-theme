@@ -96,3 +96,21 @@ button.btn:active {
 .select-kit.combo-box .select-kit-filter {
   display: none;
 }
+
+#reply-control .submit-panel {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+  padding-bottom: 10px;
+
+  .save-or-cancel {
+      flex: unset;
+      flex-basis: unset;
+  }
+}
+
+#reply-control .submit-panel .save-or-cancel #draft-status, #reply-control .submit-panel .save-or-cancel #file-uploading {
+  margin: 0;
+}

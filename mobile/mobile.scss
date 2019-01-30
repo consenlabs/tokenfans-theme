@@ -458,11 +458,30 @@ align-items: flex-start;
         padding-top: 5px;
     }
 
-    #reply-control .title-input input {
-        border: 0;
+    .title-input input {
+        border: 0 !important;
+        outline: none;
     }
 }
 
 .select-kit.combo-box.category-drop .select-kit-row .category-desc {
     display: none;
+}
+
+#reply-control .submit-panel {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+    padding-bottom: 10px;
+
+    .save-or-cancel {
+        flex: unset;
+        flex-basis: unset;
+    }
+}
+
+#reply-control .submit-panel .save-or-cancel #draft-status, #reply-control .submit-panel .save-or-cancel #file-uploading {
+    margin: 0;
 }
