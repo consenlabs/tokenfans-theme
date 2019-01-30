@@ -12,6 +12,7 @@
 
 [Developer’s guide to Discourse Themes](https://meta.discourse.org/t/developer-s-guide-to-discourse-themes/93648)
 
+[Beginners Guide to Install Discourse on macOS for Development](https://meta.discourse.org/t/beginners-guide-to-install-discourse-on-macos-for-development/15772)
 
 
 
