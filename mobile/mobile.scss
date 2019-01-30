@@ -185,7 +185,7 @@ section.user-right {
         position: relative;
         left: -20px;
 
-        .preferences-nav {
+        .mobile-nav {
             padding: 0 10px;
         }
 
@@ -213,6 +213,7 @@ section.user-right {
             background: black;
             border: 0;
             margin: 0;
+            padding-bottom: 0;
         }
     }
 
@@ -402,6 +403,7 @@ ol.category-breadcrumb {
     min-width: 200px !important;
     border-radius: 8px;
     padding: 0 20px;
+    left: 0px !important;
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
     .select-kit-row {
         padding: 10px;
