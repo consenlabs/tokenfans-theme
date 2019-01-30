@@ -488,12 +488,12 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
 .badge-wrapper.box span.badge-category-parent-bg {
     width: 100%;
     border-radius: 4px;
-    background: transparent;
+    background-color: transparent !important;
 }
 
 .badge-wrapper.box span.badge-category-parent-bg+.badge-category-bg+.badge-category {
     margin-left: 0;
-    background: transparent;
+    background-color: transparent !important;
 }
 
 .select-kit.combo-box .select-kit-filter {
