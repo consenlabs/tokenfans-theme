@@ -632,4 +632,8 @@ align-items: flex-start;
 
 .reply-details .select-kit.dropdown-select-box.composer-actions .select-kit-header {
     background: black;
+
+    svg {
+        color: white;
+    }
 }
