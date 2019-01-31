@@ -621,11 +621,15 @@ align-items: flex-start;
         font-weight: bold;  
     }
 
-    i {
+    svg {
         color: rgba(#17153c, 0.5);
     }
 }
 
 .small-action-desc button {
     margin: 0 4px;
+}
+
+.reply-details .select-kit.dropdown-select-box.composer-actions .select-kit-header {
+    background: black;
 }
