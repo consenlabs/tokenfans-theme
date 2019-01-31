@@ -463,8 +463,16 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="components/d-navigation">
+  <div class="top-50">
+    <a href="/tokenfans/top">
+      <span>Top50 Fans</span>
+  
+      <i class="fa fa-chevron-right d-icon d-icon-chevron-right" aria-hidden="true"></i>
+    </a>
+  </div>
+  
   {{bread-crumbs categories=categories category=category noSubcategories=noSubcategories}}
-
+  
   {{#if showCategoryAdmin}}
     {{categories-admin-dropdown
       create=createCategory
@@ -486,7 +494,7 @@
       action=editCategory
       icon="wrench"
       label="category.edit_long"}}
-  {{/if}}  
+  {{/if}}    
 </script>
 
 <script type="text/x-handlebars" data-template-name="preferences/account">
