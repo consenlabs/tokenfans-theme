@@ -3,7 +3,13 @@
 
   const REPLACER = {
     bars: "/assets/images/menu.svg",
-    search: "/assets/images/search.svg"
+    search: "/assets/images/search.svg",
+    gear: "/assets/images/settings.svg",
+    user: "/assets/images/user.svg",
+    "sign-out": "/assets/images/logout-outline.svg",
+    bookmark: "/assets/images/collect.svg",
+    envelope: "/assets/images/message.svg",
+    "envelope-o": "/assets/images/message-outline.svg",
   }
 
   const dropdown = {
@@ -56,6 +62,54 @@
       dropdown
     )
   );
+
+  api.reopenWidget("link", {
+    html(attrs) {
+      if (attrs.contents) {
+        return attrs.contents();
+      }
+  
+      const result = [];
+      if (attrs.icon) {
+        const node = REPLACER[attrs.icon] ? h("img", {
+          src: REPLACER[attrs.icon]
+        }) : iconNode(attrs.icon)
+        result.push(node);
+        result.push(" ");
+      }
+  
+      if (!attrs.hideLabel) {
+        let label = this.label(attrs);
+  
+        if (attrs.omitSpan) {
+          result.push(label);
+        } else {
+          result.push(h("span.d-label", label));
+        }
+      }
+  
+      const currentUser = this.currentUser;
+      if (currentUser && attrs.badgeCount) {
+        const val = parseInt(currentUser.get(attrs.badgeCount));
+        if (val > 0) {
+          const title = attrs.badgeTitle ? I18n.t(attrs.badgeTitle) : "";
+          result.push(" ");
+          result.push(
+            h(
+              "span.badge-notification",
+              {
+                className: attrs.badgeClass,
+                attributes: { title }
+              },
+              val
+            )
+          );
+        }
+      }
+  
+      return result;
+    },
+  })
 
   api.reopenWidget("header-icons", {
     html(attrs) {

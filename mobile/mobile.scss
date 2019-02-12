@@ -457,7 +457,7 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
     .qrcode-wrap {
         padding: 0 20px;
     }
-    
+
     .description {
         h1 {
             display: none;
@@ -662,5 +662,14 @@ align-items: flex-start;
 
     svg {
         color: white !important;
+    }
+}
+
+.logout {
+    .d-label {
+        color: #17153c;
+        font-size: 13px;
+        font-weight: bold;
+        margin-left: 4px;
     }
 }
