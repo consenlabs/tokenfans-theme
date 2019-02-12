@@ -1,11 +1,69 @@
 <script type="text/discourse-plugin" version="0.8">
+  const h = require("virtual-dom").h;
+
+  const REPLACER = {
+    bars: "/assets/images/menu.svg",
+    search: "/assets/images/search.svg"
+  }
+
+  const dropdown = {
+    buildClasses(attrs) {
+      if (attrs.active) {
+        return "active";
+      }
+    },
+
+    click(e) {
+      e.preventDefault();
+      if (!this.attrs.active) {
+        this.sendWidgetAction(this.attrs.action);
+      }
+    }
+  };
+
+  api.createWidget(
+    "header-dropdown-new",
+    jQuery.extend(
+      {
+        tagName: "li.header-dropdown-toggle",
+
+        html(attrs) {
+          const title = I18n.t(attrs.title);
+
+          const svg = h("img", {
+            src: REPLACER[attrs.icon]
+          })
+          const body = [svg];
+          if (attrs.contents) {
+            body.push(attrs.contents.call(this));
+          }
+
+          return h(
+            "a.icon.btn-flat",
+            {
+              attributes: {
+                href: attrs.href,
+                "data-auto-route": true,
+                title,
+                "aria-label": title,
+                id: attrs.iconId
+              }
+            },
+            body
+          );
+        }
+      },
+      dropdown
+    )
+  );
+
   api.reopenWidget("header-icons", {
     html(attrs) {
       if (this.siteSettings.login_required && !this.currentUser) {
         return [];
       }
   
-      const hamburger = this.attach("header-dropdown", {
+      const hamburger = this.attach("header-dropdown-new", {
         title: "hamburger_menu",
         icon: "bars",
         iconId: "toggle-hamburger-menu",
@@ -28,7 +86,7 @@
         }
       });
   
-      const search = this.attach("header-dropdown", {
+      const search = this.attach("header-dropdown-new", {
         title: "search.title",
         icon: "search",
         iconId: "search-button",
