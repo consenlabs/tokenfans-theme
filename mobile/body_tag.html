@@ -272,7 +272,7 @@
               <div><dt>{{i18n 'user.email.title'}}</dt>
               <dd title={{model.email}}>
                 {{#if model.email}}
-                  {{model.email}}
+                  {{format-email model.email}}
                 {{else}}
                   {{d-button action="checkEmail" actionParam=model icon="envelope-o" label="admin.users.check_email.text" class="btn-primary"}}
                 {{/if}}
@@ -535,7 +535,7 @@
       <label class="control-label">{{i18n 'user.email.title'}}</label>
       {{#if model.email}}
         <div class="controls">
-          <span class='static'>{{model.email}}</span>
+          <span class='static'>{{format-email model.email}}</span>
         </div>
         <div class='instructions'>
           {{i18n 'user.email.instructions'}}
