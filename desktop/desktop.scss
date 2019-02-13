@@ -114,3 +114,22 @@ button.btn:active {
 #reply-control .submit-panel .save-or-cancel #draft-status, #reply-control .submit-panel .save-or-cancel #file-uploading {
   margin: 0;
 }
+
+.tokenfans-lock {
+  position: relative;
+  top: 2px;
+  margin-right: 4px;
+  path, rect, circle {
+    stroke: white;
+  }
+}
+
+.user-menu {
+  .panel-body {
+    .user {
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+}

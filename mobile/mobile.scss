@@ -440,6 +440,7 @@ ol.category-breadcrumb {
 
 .select-kit.combo-box.category-drop .category-drop-header {
     border-radius: 4px;
+    max-width: 200px;
 }
 
 ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
@@ -671,5 +672,22 @@ align-items: flex-start;
         font-size: 13px;
         font-weight: bold;
         margin-left: 4px;
+    }
+}
+
+.tokenfans-lock {
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+    color: white;
+}
+
+.user-menu {
+    .panel-body {
+        .user {
+            img {
+                border-radius: 50%;
+            }
+        }
     }
 }
