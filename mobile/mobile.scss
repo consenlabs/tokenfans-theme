@@ -693,3 +693,21 @@ align-items: flex-start;
         }
     }
 }
+
+#draft-status {
+    margin-right: 4px !important;
+    font-size: 13px;
+}
+
+.bootbox.modal {
+    left: 10%;
+    width: 80%;
+    border-radius: 4px;
+    outline: none;
+
+    .modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;       
+    }
+}
