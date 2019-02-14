@@ -711,3 +711,8 @@ align-items: flex-start;
         justify-content: center;       
     }
 }
+
+.user-menu .notifications li:not(.show-all) .d-icon {
+    position: relative;
+    top: 2px;
+}
