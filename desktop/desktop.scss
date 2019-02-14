@@ -133,3 +133,12 @@ button.btn:active {
     }
   }
 }
+
+.nav-pills>li>a {
+  color: #16153c;
+}
+
+.nav-pills>li.active>a, .nav-pills>li>a.active {
+  background-color: rgba(20, 19, 59, 0.1);
+  color: #16153c;
+}
