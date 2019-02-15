@@ -405,7 +405,7 @@ section.user-right {
 
 ol.category-breadcrumb {
     flex: 1;
-    margin-left: 20px; 
+    margin: 0 20px; 
 }
 
 .list-controls .container #create-topic {
@@ -715,4 +715,8 @@ align-items: flex-start;
 .user-menu .notifications li:not(.show-all) .d-icon {
     position: relative;
     top: 2px;
+}
+
+.category-list-item.category .posts {
+    width: unset;
 }
