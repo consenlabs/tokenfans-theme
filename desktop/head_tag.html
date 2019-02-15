@@ -157,10 +157,6 @@
   
       const icons = [search];
       
-      if (this.currentUser && this.currentUser.admin) {
-        icons.push(hamburger);
-      }
-
       if (attrs.user) {
         icons.push(
           this.attach("user-dropdown", {
