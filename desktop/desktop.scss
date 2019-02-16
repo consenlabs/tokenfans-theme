@@ -164,6 +164,11 @@ button.btn-primary, button.btn-icon-text {
 
 .nav-pills>li>a {
   color: #16153c;
+
+  &:hover {
+    color: #16153c;
+    background-color: rgba(20,19,59,0.05);
+  }
 }
 
 .nav-pills>li.active>a, .nav-pills>li>a.active {
