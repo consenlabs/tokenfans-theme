@@ -252,6 +252,10 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:f
   border-right: 1px solid #c8c8c8;
 }
 
+.edit-title .d-editor-preview-wrapper {
+  margin-top: 8px;
+}
+
 // #reply-control .user-selector.with-preview, #reply-control .title-and-category.with-preview {
 //   width: unset;
 // }
