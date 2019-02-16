@@ -4,10 +4,24 @@ button.btn {
   background: #16153c;
   color: white;
   border-radius: 4px;
+
+  .d-icon { 
+    color: white;
+  }
 }
 button.btn:active {
   background: lighten($color: #16153c, $amount: 10);
   color: white;
+}
+
+button.btn-primary {
+  &.new-private-message {
+    img {
+      g {
+        fill: white;
+      }
+    }
+  }
 }
 
 #imtoken-qrcode {
@@ -172,4 +186,17 @@ button.btn:active {
 
 .control-group.pref-name {
   display: none;
+}
+
+.menu-panel.drop-down {
+  border-radius: 8px;
+}
+
+.user-menu {
+  .panel-body {
+    height: auto !important;
+  }
+  .notifications li {
+    padding: 0.5em !important;
+  }
 }

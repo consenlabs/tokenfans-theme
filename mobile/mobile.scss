@@ -607,6 +607,9 @@ align-items: flex-start;
 
 .select-kit.combo-box.category-drop.box.has-selection .category-drop-header {
     background: rgba(20, 19, 59, 0.1) !important;
+    .d-icon {
+        color: #646464 !important;
+    }
 }
 
 .select-kit.combo-box.category-drop .category-drop-header .d-icon {
