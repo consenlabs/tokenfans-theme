@@ -176,11 +176,11 @@ button.btn-primary, button.btn-icon-text {
 }
 
 .composer-fields {
-  border-top: 1px solid #e9e9e9;
   border-bottom: 1px solid #e9e9e9;
   padding: 4px 0px 0px;
   input, .select-kit.combo-box .select-kit-header {
     border: 0px;
+    outline: none;
   }
 }
 
@@ -215,5 +215,28 @@ button.btn-primary, button.btn-icon-text {
       display: flex;
       align-items: center;
       justify-content: center;       
+  }
+}
+
+#reply-control .reply-to {
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 8px;
+  .d-icon {
+    color: #16153c;
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .composer-controls {
+    display: unset;
+  }
+}
+
+#reply-control {
+  .grippie {
+    display: none;
+  }
+  .open.edit-title {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
 }
