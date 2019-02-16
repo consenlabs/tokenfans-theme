@@ -14,12 +14,18 @@ button.btn:active {
   color: white;
 }
 
-button.btn-primary {
+button.btn-primary, button.btn-icon-text {
   &.new-private-message {
     img {
       g {
         fill: white;
       }
+    }
+  }
+  img {
+    path, g {
+      fill: white;
+      stroke: white;
     }
   }
 }
@@ -198,5 +204,16 @@ button.btn-primary {
   }
   .notifications li {
     padding: 0.5em !important;
+  }
+}
+
+.bootbox.modal {
+  border-radius: 8px;
+  outline: none;
+
+  .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;       
   }
 }
