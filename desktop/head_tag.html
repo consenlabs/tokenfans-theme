@@ -79,7 +79,7 @@
         result.push(" ");
       } else if (attrs.icon) {
         const node = REPLACER[attrs.icon] ? h("img", {
-          src: REPLACER[attrs.icon]
+          src: REPLACER[attrs.icon],
           className: `svg-icon svg-icon-${attrs.icon}`,
         }) : iconNode(attrs.icon)
         result.push(node);
