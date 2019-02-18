@@ -14,7 +14,7 @@ button.btn:active {
   color: white;
 }
 
-button.btn-primary, button.btn-icon-text {
+button.btn-primary, button.btn-icon-text, a.btn, a.btn-primary {
   &.new-private-message {
     img {
       g {
@@ -22,7 +22,7 @@ button.btn-primary, button.btn-icon-text {
       }
     }
   }
-  img {
+  .svg-icon {
     path, g {
       fill: white;
       stroke: white;
