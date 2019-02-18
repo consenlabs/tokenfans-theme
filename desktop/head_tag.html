@@ -208,7 +208,7 @@
         route: "user",
         model: currentUser,
         className: "user-activity-link",
-        img: currentUser.avatar_template ? currentUser.avatar_template.replace('{size}', '32') : undefined,
+        img: (currentUser && typeof currentUser.avatar_template === 'string') ? currentUser.avatar_template.replace('{size}', '32') : undefined,
         icon: "user",
         rawLabel: currentUser.username
       };
