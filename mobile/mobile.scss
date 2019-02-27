@@ -302,9 +302,6 @@ section.user-right {
 
 .user-main .about .details, .user-main .about.collapsed-info .details {
     background: white;
-    h2.full-name {
-        display: none;
-    }
     h1.username {
         font-size: $font-up-1;
         margin-top: 10px;
@@ -514,10 +511,6 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
 
 .topic-post:last-of-type {
     padding-bottom: 0;
-}
-
-.control-group.pref-name {
-    display: none;
 }
 
 #ember1059 {
