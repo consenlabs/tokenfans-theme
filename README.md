@@ -22,3 +22,12 @@
 ### 升级
 
 因为修改的方式是，通过覆盖原来的代码来实现的，而目前所做的修改是修改一些逻辑和页面DOM（把源代码复制过来，修改一下），那么当discourse升级，而页面结构变动后，需要重新检查一下是否有新的DOM等，否则会出现bug。
+
+### 启动 discourse
+
+```
+brew services start redis
+brew services start postgresql
+brew services start nginx
+bundle exec rails server
+```
