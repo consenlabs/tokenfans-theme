@@ -31,3 +31,12 @@ brew services start postgresql
 brew services start nginx
 bundle exec rails server
 ```
+
+### DB
+
+清除数据库并新建
+```
+rake db:drop db:create db:migrate
+```
+
+[Create Admin Account from Console](https://meta.discourse.org/t/create-admin-account-from-console/17274)
