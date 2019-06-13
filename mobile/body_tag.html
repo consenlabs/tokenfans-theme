@@ -135,9 +135,8 @@
             {{/if}}
             {{#if model.number_of_flagged_posts}}
               <div>
-                {{#link-to 'user.flaggedPosts' model}}
-                  <span class="flagged-posts">{{model.number_of_flagged_posts}}</span>{{i18n 'user.staff_counters.flagged_posts'}}
-                {{/link-to}}
+                <span
+                  class="flagged-posts">{{model.number_of_flagged_posts}}</span>{{i18n 'user.staff_counters.flagged_posts'}}
               </div>
             {{/if}}
             {{#if model.number_of_deleted_posts}}
