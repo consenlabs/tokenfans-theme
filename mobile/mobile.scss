@@ -663,6 +663,7 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
     .save-or-cancel {
         flex: unset;
         flex-basis: unset;
+        margin-right: 0;
     }
 }
 
@@ -807,3 +808,68 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
     left: 0;
     width: 100%;
 }
+
+.user-secondary-navigation {
+    margin: 8px 0;
+}
+
+.user-additional-controls {
+    margin-bottom: 8px;
+}
+
+.user-main .about.collapsed-info .details {
+    border-bottom: 0;
+}
+
+.user-main .about.collapsed-info .details .primary {
+    padding: 0 8px;
+}
+
+.composer-bottom-right {
+    direction: rtl;
+}
+
+.mobile-file-upload {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #16153c;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        left: 4px;
+        top: 2px;
+    }
+}
+
+.topic-footer-main-buttons {
+
+    .share-and-invite,
+    .flag-topic {
+        display: none;
+    }
+}
+
+.topic-notifications-button {
+    display: none;
+}
+
+// .search-container {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     box-sizing: border-box;
+//     background: white;
+//     z-index: 10000;
+
+//     input {
+//         box-shadow: unset;
+
+//         &:focus {
+//             box-shadow: unset;
+//         }
+//     }
+// }
