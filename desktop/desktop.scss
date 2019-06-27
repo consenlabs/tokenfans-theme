@@ -304,6 +304,11 @@ input[type="color"]:focus {
   margin-top: 8px;
 }
 
+.topic-list th:last-of-type,
+.topic-list td:last-of-type {
+  text-align: right;
+}
+
 // #reply-control .user-selector.with-preview, #reply-control .title-and-category.with-preview {
 //   width: unset;
 // }
