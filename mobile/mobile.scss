@@ -79,8 +79,10 @@ section.user-right {
         .num.posts-map {
             font-size: $font-0;
             background: rgba(20, 19, 59, 0.1);
-            padding: 1px 8px;
+            padding: 0 7px;
             border-radius: 4px;
+            position: relative;
+            top: -1px;
 
             a {
                 padding: 0;
@@ -500,11 +502,18 @@ ol.category-breadcrumb {
 .select-kit.combo-box.category-drop .category-drop-header {
     border-radius: 4px;
     max-width: 200px;
+    border: solid 0.5px #D0D0D8;
+    padding: 2px 5px 2px 10px;
+    min-height: 34px;
 }
 
-ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
-    .category-name {
-        color: #16153c;
+ol.category-breadcrumb li.select-kit {
+    flex: unset;
+
+    .select-kit-header .selected-name {
+        .category-name {
+            color: #16153c;
+        }
     }
 }
 
@@ -717,7 +726,7 @@ ol.category-breadcrumb li.select-kit .select-kit-header .selected-name {
     background: #f8f8f8;
     padding: 12px 20px;
     margin-bottom: 14px;
-    border-bottom: 1px solid rgba(22, 21, 60, 0.2);
+    border-bottom: 0.5px solid #D0D0D8;
 
     &>a {
         display: flex;
@@ -864,11 +873,20 @@ img.avatar {
 }
 
 tbody {
-    border-width: 0.5px;
+    border-width: 1px;
 
     tr {
-        border-width: 0.5px;
+        border-width: 1px;
     }
+}
+
+.topic-list th,
+.topic-list td {
+    padding: 15px 0;
+}
+
+.topic-list .num.activity a {
+    padding: 0;
 }
 
 // .search-container {

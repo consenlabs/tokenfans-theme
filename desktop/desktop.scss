@@ -96,6 +96,7 @@ a.btn-primary {
       background: rgba(20, 19, 59, 0.1);
       padding: 4px 8px;
       border-radius: 4px;
+      color: #919191 !important;
 
       a {
         padding: 0;
@@ -107,7 +108,6 @@ a.btn-primary {
     }
 
     &.num>.number {
-      border: 1px solid rgba(20, 19, 59, 0.1);
       padding: 4px 8px;
       border-radius: 4px;
     }
@@ -307,6 +307,14 @@ input[type="color"]:focus {
 .topic-list th:last-of-type,
 .topic-list td:last-of-type {
   text-align: right;
+}
+
+tbody {
+  border-width: 1px;
+
+  tr {
+    border-width: 1px;
+  }
 }
 
 // #reply-control .user-selector.with-preview, #reply-control .title-and-category.with-preview {
