@@ -1,5 +1,14 @@
-<script type="text/discourse-plugin" version="0.8">
-  const h = require("virtual-dom").h;
-  const iconNode = Discourse.__widget_helpers.iconNode
-
+<script>
+  $(function () {
+    if (window.devicePixelRatio && devicePixelRatio >= 2) {
+      var testElem = document.createElement('div');
+      testElem.style.border = '.5px solid transparent';
+      document.body.appendChild(testElem);
+      if (testElem.offsetHeight == 1) {
+        document.querySelector('tbody').classList.add('hairlines');
+        document.querySelector('tr').classList.add('hairlines');
+      }
+      document.body.removeChild(testElem);
+    }
+  })
 </script>

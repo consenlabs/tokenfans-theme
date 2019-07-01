@@ -858,6 +858,10 @@ ol.category-breadcrumb li.select-kit {
 
 .topic-footer-main-buttons {
 
+    .select-kit {
+        display: none;
+    }
+
     .share-and-invite,
     .flag-topic {
         display: none;
@@ -873,12 +877,16 @@ img.avatar {
     height: 40px;
 }
 
-tbody {
-    border-width: 0.5px;
+// tbody {
+//     border-width: 1px;
 
-    tr {
-        border-width: 0.5px;
-    }
+//     tr {
+//         border-width: 1px;
+//     }
+// }
+
+.hairlines {
+    border-width: 0.5px;
 }
 
 .topic-list th,
