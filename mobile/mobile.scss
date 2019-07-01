@@ -83,6 +83,7 @@ section.user-right {
             border-radius: 4px;
             position: relative;
             top: -1px;
+            color: #919191 !important;
 
             a {
                 padding: 0;
@@ -873,10 +874,10 @@ img.avatar {
 }
 
 tbody {
-    border-width: 1px;
+    border-width: 0.5px;
 
     tr {
-        border-width: 1px;
+        border-width: 0.5px;
     }
 }
 
