@@ -1,0 +1,29 @@
+// Fonts
+// --------------------------------------------------
+
+$base-font-size-smaller: 14px !default;
+$base-font-size: 50px !default;
+$base-font-size-larger: 17px !default;
+$base-font-size-largest: 19px !default;
+$base-font-family: Helvetica,
+Arial,
+sans-serif !default;
+
+// Font-size defintions, multiplier ^ (step / interval)
+$font-up-6: 1.1487em;
+$font-up-5: 1.1487em;
+$font-up-4: 1.1487em;
+$font-up-3: 1.1487em;
+$font-up-2: 1.1487em;
+$font-up-1: 1.1487em; // 2^(1/5)
+$font-0: 1em;
+$font-down-1: 0.8706em; // 2^(-1/5)
+$font-down-2: 0.8706em; // Smallest size we use based on the 1em base
+$font-down-3: 0.8706em;
+$font-down-4: 0.8706em;
+$font-down-5: 0.8706em;
+$font-down-6: 0.8706em;
+
+// inputs/textareas in iOS need to be at least 16px to avoid triggering zoom on focus
+// with base at 15px, the below gives 16.05px
+$font-size-ios-input: 1em;

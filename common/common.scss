@@ -9,8 +9,10 @@
     margin: 0px;
     padding: 1rem 0;
     background: #f8f8f8;
+
     li {
         list-style: none;
+
         a {
             font-size: $font-0;
             font-weight: bold;
@@ -18,6 +20,7 @@
             padding: 0.4rem 0;
             border-bottom: 2px solid transparent;
         }
+
         a.active {
             border-bottom: 2px solid black;
         }
@@ -34,3 +37,50 @@
     }
 }
 
+#hot-users {
+    table .userinfo {
+        padding: 7.5px 5px !important;
+
+        .image {
+            img {
+                width: 40px !important;
+                height: 40px !important;
+            }
+        }
+    }
+}
+
+tbody {
+    border-top-width: 0.5px !important;
+}
+
+.topic-meta-data {
+    height: 40px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    .names span.first {
+        font-weight: 500;
+    }
+}
+
+.badge-notification,
+.badge-group {
+    border-radius: 4px;
+}
+
+.badge-notification.new-posts,
+.badge-notification.unread-posts {
+    background-color: #098de6;
+}
+
+.d-header-icons .unread-notifications {
+    background-color: #098de6;
+    border-radius: 4px;
+}
+
+#hot-users.user-list table .top-number {
+    font-weight: 500 !important;
+}

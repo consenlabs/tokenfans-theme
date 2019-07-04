@@ -40,3 +40,7 @@ rake db:drop db:create db:migrate
 ```
 
 [Create Admin Account from Console](https://meta.discourse.org/t/create-admin-account-from-console/17274)
+
+### icon
+
+[Introducing Font Awesome 5 and SVG icons](https://meta.discourse.org/t/introducing-font-awesome-5-and-svg-icons/101643)
