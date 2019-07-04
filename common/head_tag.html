@@ -1,6 +1,18 @@
 <script type="text/discourse-plugin" version="0.8">
   api.replaceIcon('thumbtack', 'token-thumbtack')
   api.replaceIcon('lock', 'token-lock')
+  api.replaceIcon('link', 'token-link')
+  api.replaceIcon('far-envelope', 'token-far-envelope')
+  api.replaceIcon('close', 'token-close')
+  api.replaceIcon('times', 'token-close')
+
+  $(document).ready(function() {
+    let currentLocale = I18n.currentLocale(); 
+    I18n.translations[currentLocale].js.user.dismiss = "忽略全部未读";
+    I18n.translations[currentLocale].js.topic.create = "发帖";
+    I18n.translations[currentLocale].js.composer.create_topic = "发帖";
+    I18n.translations[currentLocale].js.user.email.title = "钱包地址";
+  });
 </script>
 
 <script>
