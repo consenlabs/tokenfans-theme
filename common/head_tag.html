@@ -1,3 +1,8 @@
+<script type="text/discourse-plugin" version="0.8">
+  api.replaceIcon('thumbtack', 'token-thumbtack')
+  api.replaceIcon('lock', 'token-lock')
+</script>
+
 <script>
   $(function () {
     if (window.devicePixelRatio && devicePixelRatio >= 2) {
@@ -5,8 +10,11 @@
       testElem.style.border = '.5px solid transparent';
       document.body.appendChild(testElem);
       if (testElem.offsetHeight == 1) {
-        document.querySelector('tbody').classList.add('hairlines');
-        document.querySelector('tr').classList.add('hairlines');
+        var tbody = document.querySelector('tbody')
+        tbody && tbody.classList.add('hairlines');
+
+        var tr = document.querySelector('tr')
+        tr && tr.classList.add('hairlines');
       }
       document.body.removeChild(testElem);
     }

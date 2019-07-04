@@ -414,6 +414,10 @@ section.user-right {
 #topic-title {
     padding: 15px 20px;
     background: #f8f8f8;
+
+    h1 a {
+        font-size: 19px;
+    }
 }
 
 .topic-post,
@@ -428,6 +432,10 @@ section.user-right {
 
 .post-stream {
     padding-bottom: 0;
+
+    .gap {
+        padding: 0 20px;
+    }
 }
 
 .topic-map {
@@ -441,6 +449,19 @@ section.user-right {
 #suggested-topics {
     padding: 10px 20px;
     margin-top: 50px;
+
+    .topic-list .topic-item-stats .category {
+        display: none;
+    }
+
+    .topic-item-stats {
+        .pull-right {
+            float: unset;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+    }
 }
 
 #reply-control .toolbar-visible .d-editor-button-bar {
@@ -477,8 +498,8 @@ ol.category-breadcrumb {
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
 
     .select-kit-row {
-        padding: 10px;
-        border-bottom: 1px solid rgba(22, 21, 60, 0.2);
+        padding: 17px 0;
+        border-bottom: 0.5px solid rgba(22, 21, 60, 0.2);
 
         &:last-child {
             border-bottom: 0;
@@ -877,14 +898,6 @@ img.avatar {
     height: 40px;
 }
 
-// tbody {
-//     border-width: 1px;
-
-//     tr {
-//         border-width: 1px;
-//     }
-// }
-
 .hairlines {
     border-width: 0.5px;
 }
@@ -896,6 +909,23 @@ img.avatar {
 
 .topic-list .num.activity a {
     padding: 0;
+}
+
+.panel-body-contents {
+    .logout-link {
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .dismiss-link {
+        float: unset;
+        text-align: center;
+        display: block;
+
+        svg {
+            display: none;
+        }
+    }
 }
 
 // .search-container {
@@ -915,3 +945,37 @@ img.avatar {
 //         }
 //     }
 // }
+
+.mobile-view {
+    .category-boxes {
+        display: flex;
+        flex-flow: row wrap;
+
+        .category-box {
+            margin: 0 5px 0 0;
+            width: unset;
+            border-left: 0;
+
+            .category-box-inner {
+                padding: 4px 5px;
+                border-radius: 4px;
+                background-color: rgba(20, 19, 59, 0.1);
+
+                h3 {
+                    font-size: 13px;
+                    font-weight: normal;
+                    margin: 0;
+                    color: #777a8c;
+                }
+
+                .description {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.topic-post nav.post-controls button.reply {
+    padding-right: 0;
+}
