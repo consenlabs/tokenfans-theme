@@ -114,7 +114,7 @@ section.user-right {
 }
 
 .topic-list-bottom h3 {
-    font-size: $font-down-1;
+    font-size: $font-0;
     font-weight: normal;
 }
 
@@ -150,11 +150,9 @@ section.user-right {
     }
 }
 
-
 .badge-category-bg {
     display: none;
 }
-
 
 .btn .d-icon {
     color: white;
@@ -230,7 +228,6 @@ section.user-right {
     font-size: $font-up-1;
 }
 
-.list-container,
 .list-container {
     padding: 0 20px;
 }
@@ -260,10 +257,6 @@ section.user-right {
             border-bottom: 2px solid black;
         }
     }
-}
-
-.mobile-view .mobile-nav .d-icon-caret-down {
-    right: 16px;
 }
 
 .user-table {
@@ -331,11 +324,20 @@ section.user-right {
     }
 
     .user-secondary-navigation {
+        min-width: 100px;
         margin: 8px 0;
         display: inline-block;
 
+        ul {
+            border: solid 0.5px #d0d0d8;
+        }
+
         .mobile-nav {
             min-height: unset;
+
+            .d-icon-caret-down {
+                right: unset;
+            }
 
             &>li>a {
                 padding: 5px 10px;
@@ -357,19 +359,27 @@ section.user-right {
             margin-top: -60px;
             right: 8px;
         }
-    }
-}
 
-.mobile-view .mobile-nav.messages-nav,
-.mobile-view .mobile-nav.notifications-nav,
-.mobile-view .mobile-nav.activity-nav,
-.mobile-view .mobile-nav.preferences-nav {
-    position: relative;
-    top: 0px;
-    border-radius: 4px;
-    width: 100%;
-    background: transparent;
-    border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+        .controls {
+            input {
+                border: solid 0.5px #d0d0d8;
+                border-radius: 4px;
+            }
+        }
+
+        .topic-list {
+            tr {
+                .topic-item-stats {
+                    .pull-right {
+                        float: unset;
+                        display: flex;
+                        flex-flow: row nowrap;
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .create-topics-notice,
@@ -775,10 +785,6 @@ ol.category-breadcrumb li.select-kit {
     display: none;
 }
 
-.topic-post:last-of-type {
-    padding-bottom: 0;
-}
-
 #ember1059 {
     display: none;
 }
@@ -1041,6 +1047,22 @@ img.avatar {
 }
 
 .mobile-view {
+    .mobile-nav .d-icon-caret-down {
+        right: 16px;
+    }
+
+    .mobile-nav.messages-nav,
+    .mobile-nav.notifications-nav,
+    .mobile-nav.activity-nav,
+    .mobile-nav.preferences-nav {
+        position: relative;
+        top: 0px;
+        border-radius: 4px;
+        width: 100%;
+        background: transparent;
+        border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+    }
+
     .category-boxes {
         display: flex;
         flex-flow: row wrap;
@@ -1070,10 +1092,16 @@ img.avatar {
     }
 }
 
-.topic-post nav.post-controls button.reply {
-    padding-right: 0;
-    position: relative;
-    left: 6px;
+.topic-post {
+    nav.post-controls button.reply {
+        padding-right: 0;
+        position: relative;
+        left: 6px;
+    }
+
+    &:last-of-type {
+        padding-bottom: 0;
+    }
 }
 
 .title-wrapper {
@@ -1114,3 +1142,69 @@ img.avatar {
 //         }
 //     }
 // }
+
+#user-card,
+#group-card {
+    max-width: 90vw;
+    margin: 0 5vw;
+    border-radius: 8px;
+
+    .card-content {
+        border-radius: 8px;
+        padding: 20px;
+
+        .user-profile-link {
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .username {
+            font-weight: 13px;
+            color: #2b2b2b;
+            opacity: 0.5;
+        }
+    }
+
+    .first-row {
+        .usercard-controls {
+            margin-top: 4px;
+        }
+
+        .user-card-avatar {
+            margin-top: 0;
+        }
+    }
+}
+
+.modal-outer-container {
+    .modal-body {
+        label.btn {
+            background: #16153c;
+            color: white;
+            border-radius: 4px;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        .btn {
+            margin: 0;
+            flex: 1;
+        }
+
+        a.d-modal-cancel {
+            background: #16153c;
+            color: white;
+            border-radius: 4px;
+            padding: 8px 14px;
+            font-size: $font-0;
+            line-height: 1;
+            flex: 1;
+            text-align: center;
+        }
+    }
+}
