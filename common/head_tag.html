@@ -14,6 +14,268 @@
     I18n.translations[currentLocale].js.composer.create_topic = "发帖";
     I18n.translations[currentLocale].js.user.email.title = "钱包地址";
   });
+
+  const h = require("virtual-dom").h;
+  const iconNode = Discourse.__widget_helpers.iconNode
+  const RawHtml = Discourse.__widget_helpers.rawHtml
+
+  api.reopenWidget("notification-item", {
+    html(attrs) {
+      const notificationType = attrs.notification_type;
+      const lookup = this.site.get("notificationLookup");
+      const notificationName = lookup[notificationType];
+
+      let { data } = attrs;
+      let infoKey =
+      notificationName === "custom" ? data.message : notificationName;
+      let text = this.text(notificationType, notificationName);
+      let icon = iconNode(`notification.${infoKey}`);
+      if ('private_message' === infoKey) {
+        icon = h("img", { attributes: { src: "/assets/images/message-outline.svg", class: "fa d-icon d-icon-far-envelope svg-icon svg-node" } })
+      }
+      if ('posted' === infoKey) {
+        icon = h("img", { attributes: { src: "/assets/images/reply.svg", class: "fa d-icon d-icon-reply svg-icon svg-node" } })
+      }
+      
+
+      let title;
+
+      if (notificationName) {
+        if (notificationName === "custom") {
+          title = data.title ? I18n.t(data.title) : "";
+        } else {
+          title = I18n.t(`notifications.titles.${notificationName}`);
+        }
+      } else {
+        title = "";
+      }
+
+      // We can use a `<p>` tag here once other languages have fixed their HTML
+        // translations.
+        let html = new RawHtml({ html: `<div>${text}</div>` });
+
+        let contents = [icon, html];
+
+        const href = this.url();
+        return href
+            ? h(
+                "a",
+                { attributes: { href, title, "data-auto-route": true } },
+                contents
+              ) : contents;
+      },
+    })
+
+    const REPLACER = {
+      bars: "/assets/images/menu.svg",
+      search: "/assets/images/search.svg",
+      gear: "/assets/images/settings.svg",
+      user: "/assets/images/user.svg",
+      "sign-out-alt": "/assets/images/logout-outline.svg",
+      bookmark: "/assets/images/collect.svg",
+      envelope: "/assets/images/message.svg",
+      "far-envelope": "/assets/images/message-outline.svg",
+      "envelope-o": "/assets/images/message-outline.svg",
+      plus: "/assets/images/plus.svg",
+      lock: "/assets/images/lock.svg",
+      "chevron-down": "/assets/images/chevron-down.svg",
+      "discourse-expand": "/assets/images/discourse-expand.svg",
+      "thumbtack": "/assets/images/pin.svg",
+      "thumb-tack": "/assets/images/pin.svg",
+      "link": "/assets/images/link.svg",
+      "close": "/assets/images/close.svg",
+      "times": "/assets/images/close.svg",
+      "far-image": "/assets/images/photo.svg",
+      "chevron-right": "/assets/images/chevron-right.svg",
+    }
+
+    const dropdown = {
+      buildClasses(attrs) {
+        if (attrs.active) {
+          return "active";
+        }
+      },
+
+      click(e) {
+        e.preventDefault();
+        if (!this.attrs.active) {
+          this.sendWidgetAction(this.attrs.action);
+        }
+      }
+    };
+
+    api.createWidget("header-dropdown-new", jQuery.extend(
+      {
+        tagName: "li.header-dropdown-toggle",
+
+        html(attrs) {
+          const title = I18n.t(attrs.title);
+
+          const svg = h("img", {
+            src: REPLACER[attrs.icon],
+            className: `svg-icon svg-icon-${attrs.icon}`,
+          })
+          const body = [svg];
+          if (attrs.contents) {
+            body.push(attrs.contents.call(this));
+          }
+
+          return h(
+            "a.icon.btn-flat",
+            {
+              attributes: {
+              href: attrs.href,
+              "data-auto-route": true,
+              title,
+              "aria-label": title,
+              id: attrs.iconId
+            }
+            },
+            body
+          );
+        }
+      },
+      dropdown
+      )
+    );
+
+    api.reopenWidget("link", {
+    html(attrs) {
+      if (attrs.contents) {
+        return attrs.contents();
+      }
+  
+      const result = [];
+      if (attrs.img) {
+        result.push(h("img", {
+          src: attrs.img
+        }));
+        result.push(" ");
+      } else if (attrs.icon) {
+        const node = REPLACER[attrs.icon] ? h("img", {
+          src: REPLACER[attrs.icon],
+          className: `svg-icon svg-icon-${attrs.icon}`,
+        }) : iconNode(attrs.icon)
+        result.push(node);
+        result.push(" ");
+      }
+  
+      if (!attrs.hideLabel) {
+        let label = this.label(attrs);
+  
+        if (attrs.omitSpan) {
+          result.push(label);
+        } else {
+          result.push(h("span.d-label", label));
+        }
+      }
+  
+      const currentUser = this.currentUser;
+      if (currentUser && attrs.badgeCount) {
+        const val = parseInt(currentUser.get(attrs.badgeCount));
+        if (val > 0) {
+          const title = attrs.badgeTitle ? I18n.t(attrs.badgeTitle) : "";
+          result.push(" ");
+          result.push(
+            h(
+              "span.badge-notification",
+              {
+                className: attrs.badgeClass,
+                attributes: { title }
+              },
+              val
+            )
+          );
+        }
+      }
+  
+      return result;
+    },
+  })
+
+  api.reopenWidget("user-menu-links", {
+    html(attrs) {
+      const { currentUser, siteSettings } = this;
+
+      const isAnon = currentUser.is_anonymous;
+      const allowAnon =
+        (siteSettings.allow_anonymous_posting &&
+          currentUser.trust_level >=
+            siteSettings.anonymous_posting_min_trust_level) ||
+        isAnon;
+
+      const path = attrs.path;
+      const glyphs = [];
+
+      glyphs.push({
+        label: "user.bookmarks",
+        className: "user-bookmarks-link",
+        icon: "bookmark",
+        href: `${path}/activity/bookmarks`
+      });
+
+      if (siteSettings.enable_personal_messages) {
+        glyphs.push({
+          label: "user.private_messages",
+          className: "user-pms-link",
+          icon: "envelope",
+          href: `${path}/messages`
+        });
+      }
+
+      const profileLink = {
+        route: "user",
+        model: currentUser,
+        className: "user-activity-link",
+        img: (currentUser && typeof currentUser.avatar_template === 'string') ? currentUser.avatar_template.replace('{size}', '32') : undefined,
+        icon: "user",
+        rawLabel: currentUser.username
+      };
+
+      if (currentUser.is_anonymous) {
+        profileLink.label = "user.profile";
+        profileLink.rawLabel = null;
+      }
+
+      const links = [profileLink];
+      if (allowAnon) {
+        if (!isAnon) {
+          glyphs.push({
+            action: "toggleAnonymous",
+            label: "switch_to_anon",
+            className: "enable-anonymous",
+            icon: "user-secret"
+          });
+        } else {
+          glyphs.push({
+            action: "toggleAnonymous",
+            label: "switch_from_anon",
+            className: "disable-anonymous",
+            icon: "ban"
+          });
+        }
+      }
+
+      // preferences always goes last
+      glyphs.push({
+        label: "user.preferences",
+        className: "user-preferences-link",
+        icon: "gear",
+        href: `${path}/preferences/account`
+      });
+
+      return h("ul.menu-links-row", [
+        links.map(l => {
+          return h("li.user", this.attach("link", l))
+        }),
+        h(
+          "li.glyphs",
+          glyphs.map(l => this.attach("link", $.extend(l, { hideLabel: true })))
+        )
+      ]);
+    }
+  })
+
 </script>
 
 <script>

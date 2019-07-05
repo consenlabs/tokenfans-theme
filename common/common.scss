@@ -132,3 +132,77 @@ header.d-header {
         }
     }
 }
+
+button.btn,
+.btn[href] {
+    background: #16153c;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: $font-0;
+
+    .d-button-label,
+    i {
+        color: white !important;
+    }
+}
+
+button.btn:active {
+    background: lighten($color: #16153c, $amount: 10);
+    color: white;
+
+    .d-button-label {
+        color: white !important;
+    }
+}
+
+.btn[disabled],
+.btn.disabled {
+    display: none;
+}
+
+.bootbox.modal {
+    left: 10%;
+    width: 80%;
+    border-radius: 4px;
+    outline: none;
+
+    .modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.modal-outer-container {
+    .modal-body {
+        label.btn {
+            background: #16153c;
+            color: white;
+            border-radius: 4px;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        .btn {
+            margin: 0;
+            flex: 1;
+        }
+
+        a.d-modal-cancel {
+            background: #16153c;
+            color: white;
+            border-radius: 4px;
+            padding: 8px 14px;
+            font-size: $font-0;
+            line-height: 1;
+            flex: 1;
+            text-align: center;
+        }
+    }
+}

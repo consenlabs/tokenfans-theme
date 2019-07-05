@@ -176,7 +176,6 @@ section.user-right {
     .title-input {
         padding: 6px 0;
         border-bottom: 1px solid rgba(22, 21, 60, 0.15);
-        border-top: 1px solid rgba(22, 21, 60, 0.15);
     }
 
     .submit-panel {
@@ -243,17 +242,20 @@ section.user-right {
     overflow-x: scroll;
     justify-content: space-around;
     margin: 0px;
-    padding: 1rem 0;
+    padding: 0;
     background: #f8f8f8;
+    border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+    border-top: 1px solid rgba(22, 21, 60, 0.15);
 
     li {
         list-style: none;
+        padding: 1rem 0;
 
         a {
             font-size: $font-0;
             font-weight: bold;
             color: #17153c;
-            padding: 0.4rem 0;
+            padding: 1rem 0;
             border-bottom: 2px solid transparent;
         }
 
@@ -266,6 +268,10 @@ section.user-right {
 .user-table {
     padding: 0 20px;
     margin-top: 0;
+
+    .wrapper>.user-content {
+        margin-top: 16px;
+    }
 
     .user-navigation {
         width: 100vw;
@@ -329,7 +335,7 @@ section.user-right {
 
     .user-secondary-navigation {
         min-width: 100px;
-        margin: 8px 0;
+        margin: 16px 0 0 0;
         display: inline-block;
 
         ul {
@@ -353,8 +359,33 @@ section.user-right {
         margin-bottom: 8px;
         display: inline-block;
         position: absolute;
-        margin-top: 8px;
+        margin-top: 16px;
         right: 20px;
+    }
+
+    button.btn,
+    button.btn-primary {
+
+        svg,
+        img {
+            display: none;
+        }
+    }
+
+    .controls {
+        button {
+
+            svg,
+            img {
+                display: inherit;
+            }
+        }
+    }
+
+    .control-group.save-button {
+        .controls {
+            border-radius: 4px;
+        }
     }
 
     .user-content {
@@ -366,7 +397,7 @@ section.user-right {
             }
 
             position: absolute;
-            margin-top: -60px;
+            margin-top: -54px;
             right: 20px;
         }
 
@@ -406,31 +437,99 @@ section.user-right {
     display: none;
 }
 
-.user-main .about {
-    margin-bottom: 0;
+.user-main {
 
-    .secondary {
-        padding: 5px 10px;
-        border-bottom: 0;
+    .about {
+        margin-bottom: 0;
 
-        dt,
-        dd {
-            font-size: $font-down-1;
-            color: rgba(#17153c, 0.5);
+        &.collapsed-info .details {
+            border-bottom: 0;
         }
 
-        dt {
-            word-break: keep-all;
+        .secondary {
+            padding: 5px 20px;
+            border-bottom: 0;
+            box-sizing: border-box;
+
+            dt,
+            dd {
+                font-size: $font-down-1;
+                color: rgba(#17153c, 0.5);
+            }
+
+            dt {
+                word-break: keep-all;
+            }
+
+            dd {
+                margin: 0 30px 0 0;
+                word-break: break-all;
+            }
+
+            span {
+                font-size: $font-0;
+                color: rgba(#17153c, 0.5);
+            }
         }
 
-        dd {
-            margin: 0 30px 0 0;
-            word-break: break-all;
+        .details .primary .avatar,
+        &.collapsed-info .details .primary .avatar {
+            width: 70px;
+            height: 70px;
+            margin: 0;
         }
 
-        span {
-            font-size: $font-0;
-            color: rgba(#17153c, 0.5);
+        &.collapsed-info .details .primary {
+            h1.username {
+                font-size: $font-up-1;
+                margin-top: 10px;
+            }
+        }
+
+        .details,
+        &.collapsed-info .details {
+            background: white;
+            padding: 0 20px;
+
+            h1.username {
+                font-size: $font-up-1;
+                margin-top: 10px;
+            }
+        }
+
+        .details .primary .primary-textual,
+        &.collapsed-info .details .primary .primary-textual {
+            flex: unset;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            margin: 0 16px;
+
+            h1 {
+                font-size: 19px;
+                font-weight: 500;
+                margin-bottom: 4px;
+            }
+
+            h2 {
+                font-size: 15px;
+                color: #16153c;
+                margin-bottom: 0;
+            }
+        }
+
+        .controls {
+            flex: unset;
+
+            a {
+                &.btn-primary {
+                    background: #16153c;
+                    color: white;
+                    min-width: unset;
+                    border-radius: 4px;
+                    padding: 8px 10px;
+                }
+            }
         }
     }
 }
@@ -442,49 +541,6 @@ section.user-right {
 
 #main-outlet {
     padding-top: 3.6em;
-}
-
-.user-main .about .details .primary .avatar,
-.user-main .about.collapsed-info .details .primary .avatar {
-    width: 70px;
-    height: 70px;
-}
-
-.user-main .about.collapsed-info .details .primary {
-    h1.username {
-        font-size: $font-up-1;
-        margin-top: 10px;
-    }
-}
-
-.user-main .about .details,
-.user-main .about.collapsed-info .details {
-    background: white;
-
-    h1.username {
-        font-size: $font-up-1;
-        margin-top: 10px;
-    }
-}
-
-.user-main .about .details .primary .primary-textual,
-.user-main .about.collapsed-info .details .primary .primary-textual {
-    flex: unset;
-    margin: 0 10px 5px 10px;
-}
-
-.user-main .about .controls {
-    flex: unset;
-}
-
-.user-main .about .controls a {
-    &.btn-primary {
-        background: #16153c;
-        color: white;
-        min-width: unset;
-        border-radius: 4px;
-        padding: 8px 10px;
-    }
 }
 
 .user-menu {
@@ -1002,15 +1058,6 @@ ol.category-breadcrumb li.select-kit {
     width: 100%;
 }
 
-
-.user-main .about.collapsed-info .details {
-    border-bottom: 0;
-}
-
-.user-main .about.collapsed-info .details .primary {
-    padding: 0 8px;
-}
-
 .composer-bottom-right {
     direction: rtl;
 
@@ -1166,6 +1213,18 @@ img.avatar {
 
     &:last-of-type {
         padding-bottom: 0;
+    }
+
+    .post-menu-area {
+        nav.post-controls {
+            .toggle-like {
+                padding-left: 0;
+            }
+
+            .like-count {
+                padding-left: 0;
+            }
+        }
     }
 }
 
