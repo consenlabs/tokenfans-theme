@@ -569,7 +569,7 @@ section.user-right {
 
     .notifications {
         display: block;
-        max-height: calc(100vh - 100px);
+        max-height: calc(100vh - 150px);
         overflow-y: scroll;
 
         li {
@@ -1060,7 +1060,6 @@ ol.category-breadcrumb li.select-kit {
 
 .composer-bottom-right {
     direction: rtl;
-
 }
 
 .mobile-file-upload {
