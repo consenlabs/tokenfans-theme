@@ -121,3 +121,14 @@ tbody {
 #hot-users.user-list table .top-number {
     font-weight: 500 !important;
 }
+
+header.d-header {
+    .d-header-icons {
+
+        .svg-icon-search,
+        .svg-icon-bars {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
