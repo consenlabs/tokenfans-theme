@@ -38,8 +38,45 @@
 }
 
 #hot-users {
-    table .userinfo {
-        padding: 7.5px 5px !important;
+    padding: 0 20px;
+
+    .card-header {
+        margin: 16px 0;
+
+        strong {
+            font-size: 15px;
+            font-weight: 500;
+        }
+    }
+
+    table {
+        thead {
+            th {
+                font-size: 13px;
+                color: #777a8c;
+                text-align: center;
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    .userinfo {
+                        padding: 7.5px 0 !important;
+
+                        .user-name {
+                            font-size: 15px;
+                        }
+                    }
+
+                    &.top-number {
+                        span {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
 
         .image {
             img {
