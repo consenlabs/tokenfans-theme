@@ -62,6 +62,8 @@ registerUnbound("d-icon", function (id, params) {
 
 `lib/icon-library` 经验证没有被覆盖，那么在 js 中通过调用 `iconNode` 渲染的 icon 就无法被替换，只能针对所使用到的地方，去替换。
 
+解决：用 iconfont 解决。
+
 ##### 局部
 
 如果看到要改哪个 icon，就覆写哪个组件，这会导致要覆写的组件非常多，将来难以维护。

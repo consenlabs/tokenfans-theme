@@ -302,4 +302,12 @@
       document.body.removeChild(testElem);
     }
   })
+
+  $(function () {
+    const head = document.head || document.getElementsByTagName('head')[0];
+    const link = document.createElement('link');
+    link.rel = 'stylesheet'
+    link.href = '//at.alicdn.com/t/font_1283185_9uxlz8bfor.css'
+    head.appendChild(link)
+  })
 </script>

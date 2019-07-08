@@ -1,5 +1,7 @@
 @import "common/foundation/variables";
 
+$border: 0.5px solid #e9e9e9;
+
 .flex-row-list {
     width: 100%;
     display: flex;
@@ -62,7 +64,7 @@
             tr {
                 td {
                     .userinfo {
-                        padding: 7.5px 0 !important;
+                        padding: 12px 0 !important;
 
                         .user-name {
                             font-size: 15px;
@@ -80,8 +82,8 @@
 
         .image {
             img {
-                width: 40px !important;
-                height: 40px !important;
+                width: 35px !important;
+                height: 35px !important;
             }
         }
     }
@@ -159,4 +161,87 @@ button.btn:active {
 .btn[disabled],
 .btn.disabled {
     display: none;
+}
+
+.btn .d-icon {
+    color: white;
+}
+
+.user-menu {
+    .notifications {
+        display: block;
+        max-height: calc(100vh - 115px);
+        overflow-y: scroll;
+
+        hr {
+            display: none;
+        }
+
+        li {
+            border-bottom: $border;
+            padding: 8px 20px !important;
+
+            a>img,
+            a>svg {
+                margin-right: 15px !important;
+            }
+
+            a>div {
+                font-size: $font-down-1;
+                color: rgba(#17153c, 0.5);
+            }
+
+            span {
+                display: block;
+                font-size: $font-0;
+                line-height: 2;
+            }
+
+            &.show-all {
+                padding: 0 !important;
+            }
+        }
+
+        .fa {
+            line-height: 1;
+        }
+
+        .read {
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+}
+
+.select-kit.combo-box.category-drop .select-kit-body {
+    width: unset !important;
+    min-width: 200px !important;
+    border-radius: 8px;
+    padding: 0 20px;
+    left: 0px !important;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
+
+    .select-kit-row {
+        padding: 17px 0;
+        border-bottom: 0.5px solid rgba(22, 21, 60, 0.2);
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        span {
+            color: #16153c;
+            font-weight: normal;
+        }
+
+        &.is-selected,
+        &.is-highlighted {
+            background: white;
+
+            span {
+                color: #008cd5;
+            }
+        }
+    }
 }
