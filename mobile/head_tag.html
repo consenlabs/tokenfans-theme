@@ -2,6 +2,79 @@
   const h = require("virtual-dom").h;
   const iconNode = Discourse.__widget_helpers.iconNode
 
+  const REPLACER = {
+    bars: "/assets/images/menu.svg",
+    search: "/assets/images/search.svg",
+    gear: "/assets/images/settings.svg",
+    user: "/assets/images/user.svg",
+    "sign-out-alt": "/assets/images/logout-outline.svg",
+    bookmark: "/assets/images/collect.svg",
+    envelope: "/assets/images/message.svg",
+    "far-envelope": "/assets/images/message-outline.svg",
+    "envelope-o": "/assets/images/message-outline.svg",
+    plus: "/assets/images/plus.svg",
+    lock: "/assets/images/lock.svg",
+    "chevron-down": "/assets/images/chevron-down.svg",
+    "discourse-expand": "/assets/images/discourse-expand.svg",
+    "thumbtack": "/assets/images/pin.svg",
+    "thumb-tack": "/assets/images/pin.svg",
+    "link": "/assets/images/link.svg",
+    "close": "/assets/images/close.svg",
+    "times": "/assets/images/close.svg",
+    "far-image": "/assets/images/photo.svg",
+    "chevron-right": "/assets/images/chevron-right.svg",
+  }
+
+  const dropdown = {
+    buildClasses(attrs) {
+      if (attrs.active) {
+        return "active";
+      }
+    },
+
+    click(e) {
+      e.preventDefault();
+      if (!this.attrs.active) {
+        this.sendWidgetAction(this.attrs.action);
+      }
+    }
+  };
+
+  api.createWidget("header-dropdown-new", jQuery.extend(
+      {
+        tagName: "li.header-dropdown-toggle",
+
+        html(attrs) {
+          const title = I18n.t(attrs.title);
+
+          const svg = h("img", {
+            src: REPLACER[attrs.icon],
+            className: `svg-icon svg-icon-${attrs.icon}`,
+          })
+          const body = [svg];
+          if (attrs.contents) {
+            body.push(attrs.contents.call(this));
+          }
+
+          return h(
+            "a.icon.btn-flat",
+            {
+              attributes: {
+              href: attrs.href,
+              "data-auto-route": true,
+              title,
+              "aria-label": title,
+              id: attrs.iconId
+            }
+            },
+            body
+          );
+        }
+      },
+      dropdown
+      )
+    );
+
   api.reopenWidget("header-icons", {
     html(attrs) {
       if (this.siteSettings.login_required && !this.currentUser) {

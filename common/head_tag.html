@@ -30,11 +30,21 @@
       notificationName === "custom" ? data.message : notificationName;
       let text = this.text(notificationType, notificationName);
       let icon = iconNode(`notification.${infoKey}`);
-      if ('private_message' === infoKey) {
+      if ('group_message_summary' === infoKey) {
+        icon = h("img", { attributes: {
+          src: "/assets/images/group.svg",
+          class: "fa d-icon d-icon-users svg-icon svg-node",
+          style: "top:-2px;"
+        } })
+      }
+      if ('private_message' === infoKey || 'invited_to_private_message' === infoKey) {
         icon = h("img", { attributes: { src: "/assets/images/message-outline.svg", class: "fa d-icon d-icon-far-envelope svg-icon svg-node" } })
       }
       if ('posted' === infoKey) {
         icon = h("img", { attributes: { src: "/assets/images/reply.svg", class: "fa d-icon d-icon-reply svg-icon svg-node" } })
+      }
+      if ('liked' === infoKey) {
+        icon = h("img", { attributes: { src: "/assets/images/liked.svg", class: "fa d-icon d-icon-heart svg-icon svg-node" } })
       }
       
 

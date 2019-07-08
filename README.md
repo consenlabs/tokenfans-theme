@@ -14,6 +14,8 @@
 
 [Beginners Guide to Install Discourse on macOS for Development](https://meta.discourse.org/t/beginners-guide-to-install-discourse-on-macos-for-development/15772)
 
+[Beginner’s Guide to Creating Discourse Plugins](https://meta.discourse.org/t/beginners-guide-to-creating-discourse-plugins-part-1/30515)
+
 ### Notes
 
 - 帖子 lock 图标在 category-link 92 行
