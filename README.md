@@ -46,3 +46,26 @@ rake db:drop db:create db:migrate
 ### icon
 
 [Introducing Font Awesome 5 and SVG icons](https://meta.discourse.org/t/introducing-font-awesome-5-and-svg-icons/101643)
+
+###### 全局
+
+现在，部分的 icon 是通过覆盖 `d-icon`方法实现的：
+```js
+registerUnbound("d-icon", function (id, params) {
+  if (REPLACER[id]) {
+    return new Handlebars.SafeString(`<img src="${REPLACER[id]}" class="svg-icon svg-icon-${id}" />`);
+  }
+  return new Handlebars.SafeString(renderIcon("string", id, params));
+});
+```
+但这种方式会导致，用在 button 里的 icon 也会被覆盖，而 img 元素不方便修改 svg 的颜色，导致：如果替换的 icon 是灰色的，那么 icon 就会看不到（因为 button 统一是黑色 background）。
+
+`lib/icon-library` 经验证没有被覆盖，那么在 js 中通过调用 `iconNode` 渲染的 icon 就无法被替换，只能针对所使用到的地方，去替换。
+
+##### 局部
+
+如果看到要改哪个 icon，就覆写哪个组件，这会导致要覆写的组件非常多，将来难以维护。
+
+### i18n
+
+部分 i18n 无法被覆盖，如 `topic.create`

@@ -1,5 +1,7 @@
 @import "common/foundation/variables";
 
+$border: 0.5px solid #e9e9e9;
+
 html * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -175,7 +177,7 @@ section.user-right {
     .category-input,
     .title-input {
         padding: 6px 0;
-        border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+        border-bottom: $border;
     }
 
     .submit-panel {
@@ -244,8 +246,8 @@ section.user-right {
     margin: 0px;
     padding: 0;
     background: #f8f8f8;
-    border-bottom: 1px solid rgba(22, 21, 60, 0.15);
-    border-top: 1px solid rgba(22, 21, 60, 0.15);
+    border-bottom: $border;
+    border-top: $border;
 
     li {
         list-style: none;
@@ -330,7 +332,7 @@ section.user-right {
     }
 
     .control-group {
-        border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+        border-bottom: $border;
     }
 
     .user-secondary-navigation {
@@ -577,9 +579,11 @@ section.user-right {
         }
 
         li {
+            border-bottom: $border;
             padding: 8px 20px !important;
 
-            a>img {
+            a>img,
+            a>svg {
                 margin-right: 15px !important;
             }
 
@@ -604,8 +608,6 @@ section.user-right {
         }
 
         .read {
-            border-bottom: 0.5px solid #e9e9e9;
-
             &:last-child {
                 border-bottom: 0;
             }
@@ -919,14 +921,14 @@ ol.category-breadcrumb li.select-kit {
 .reply-area {
     .composer-fields {
         .submit-panel {
-            border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+            border-bottom: $border;
         }
     }
 
     .d-editor-textarea-wrapper,
     .select-kit.combo-box .select-kit-header {
         border: 0;
-        // border-top: 1px solid rgba(22, 21, 60, 0.15);
+        // border-top: $border;
         padding-top: 5px;
     }
 
@@ -1027,7 +1029,8 @@ ol.category-breadcrumb li.select-kit {
 .user-menu {
     .panel-body {
         .menu-links-header {
-            border-bottom: 0.5px solid #e9e9e9;
+            border-bottom: $border;
+            padding: 8px 0;
         }
 
         .user {
@@ -1123,7 +1126,9 @@ img.avatar {
     .logout-link {
         position: absolute;
         bottom: 10px;
-        padding: 2px 20px !important;
+        padding: 8px 20px !important;
+        width: 100%;
+        border-top: $border;
     }
 
     .dismiss-link {
@@ -1131,7 +1136,7 @@ img.avatar {
         text-align: center;
         display: block;
         padding: 0.4em;
-        border-top: 0.5px solid #e9e9e9;
+        border-top: $border;
 
         span {
             font-size: $font-down-1;
@@ -1158,7 +1163,7 @@ img.avatar {
         border-radius: 4px;
         width: 100%;
         background: transparent;
-        border-bottom: 1px solid rgba(22, 21, 60, 0.15);
+        border-bottom: $border;
     }
 
     .preferences-nav,
@@ -1173,7 +1178,7 @@ img.avatar {
             top: 32px;
 
             &>li {
-                border-top: 1px solid rgba(22, 21, 60, 0.15);
+                border-top: $border;
                 margin: 0;
                 padding: 12px 0;
 
