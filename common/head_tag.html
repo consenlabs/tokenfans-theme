@@ -227,36 +227,7 @@
     }
   })
 
-  
-</script>
-
-<script>
-  $(function () {
-    if (window.devicePixelRatio && devicePixelRatio >= 2) {
-      var testElem = document.createElement('div');
-      testElem.style.border = '.5px solid transparent';
-      document.body.appendChild(testElem);
-      if (testElem.offsetHeight == 1) {
-        var tbody = document.querySelector('tbody')
-        tbody && tbody.classList.add('hairlines');
-
-        var tr = document.querySelector('tr')
-        tr && tr.classList.add('hairlines');
-      }
-      document.body.removeChild(testElem);
-    }
-  })
-
-  $(function () {
-    const head = document.head || document.getElementsByTagName('head')[0];
-    const link = document.createElement('link');
-    link.rel = 'stylesheet'
-    link.href = '//at.alicdn.com/t/font_1283185_6paln0o939.css'
-    head.appendChild(link)
-  })
-</script>
-
-<!-- api.reopenWidget("notification-item", {
+  api.reopenWidget("notification-item", {
     html(attrs) {
       const notificationType = attrs.notification_type;
       const lookup = this.site.get("notificationLookup");
@@ -297,18 +268,43 @@
         title = "";
       }
 
-      // We can use a `<p>` tag here once other languages have fixed their HTML
-        // translations.
-        let html = new RawHtml({ html: `<div>${text}</div>` });
+      let html = new RawHtml({ html: `<div>${text}</div>` });
 
-        let contents = [icon, html];
+      let contents = [icon, html];
 
-        const href = this.url();
-        return href
-            ? h(
-                "a",
-                { attributes: { href, title, "data-auto-route": true } },
-                contents
-              ) : contents;
+      const href = this.url();
+      return href
+          ? h(
+              "a",
+              { attributes: { href, title, "data-auto-route": true } },
+              contents
+            ) : contents;
       },
-    }) -->
+    })
+</script>
+
+<script>
+  $(function () {
+    if (window.devicePixelRatio && devicePixelRatio >= 2) {
+      var testElem = document.createElement('div');
+      testElem.style.border = '.5px solid transparent';
+      document.body.appendChild(testElem);
+      if (testElem.offsetHeight == 1) {
+        var tbody = document.querySelector('tbody')
+        tbody && tbody.classList.add('hairlines');
+
+        var tr = document.querySelector('tr')
+        tr && tr.classList.add('hairlines');
+      }
+      document.body.removeChild(testElem);
+    }
+  })
+
+  $(function () {
+    const head = document.head || document.getElementsByTagName('head')[0];
+    const link = document.createElement('link');
+    link.rel = 'stylesheet'
+    link.href = '//at.alicdn.com/t/font_1283185_6paln0o939.css'
+    head.appendChild(link)
+  })
+</script>

@@ -324,3 +324,11 @@ tbody {
 .btn .d-icon {
   color: white;
 }
+
+.post-menu-area {
+  nav.post-controls {
+    .like-count {
+      padding-left: 0 !important;
+    }
+  }
+}
