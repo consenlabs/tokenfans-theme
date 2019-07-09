@@ -342,6 +342,22 @@ section.user-right {
 
         ul {
             border: solid 0.5px #d0d0d8;
+
+            li {
+                a.expander {
+                    svg.d-icon-users {
+                        display: none;
+                    }
+                }
+            }
+
+            .expanded {
+                li {
+                    svg.d-icon-users {
+                        display: none;
+                    }
+                }
+            }
         }
 
         .mobile-nav {
@@ -369,7 +385,8 @@ section.user-right {
     button.btn-primary {
 
         svg,
-        img {
+        img,
+        i {
             display: none;
         }
     }
@@ -393,6 +410,14 @@ section.user-right {
     .user-content {
         .list-actions {
             justify-content: flex-end;
+
+            button {
+                height: 32px;
+
+                .d-button-label {
+                    line-height: unset;
+                }
+            }
 
             button:last-child {
                 margin-right: 0;
@@ -542,11 +567,12 @@ section.user-right {
 }
 
 #main-outlet {
-    padding-top: 3.6em;
+    padding-top: 3.4em;
 }
 
 .user-menu {
     .menu-panel {
+        width: 295px !important;
         padding: 0;
         height: 100vh !important;
 
@@ -834,10 +860,25 @@ ol.category-breadcrumb li.select-kit {
 
 
 .reply-area {
+    padding: 0 !important;
+
     .composer-fields {
         .submit-panel {
             border-bottom: $border;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding-top: 7px;
+            padding-left: 10px;
         }
+
+        .title-and-category {
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+    }
+
+    .d-editor {
+        padding: 0 10px;
     }
 
     .d-editor-textarea-wrapper,
@@ -851,6 +892,10 @@ ol.category-breadcrumb li.select-kit {
         border: 0 !important;
         outline: none;
         box-shadow: none !important;
+    }
+
+    #xmobile-image-upload {
+        padding: 0 10px;
     }
 }
 
@@ -937,7 +982,12 @@ ol.category-breadcrumb li.select-kit {
     .panel-body {
         .menu-links-header {
             border-bottom: $border;
-            padding: 8px 0;
+            padding: 8px 5px;
+            box-sizing: border-box;
+
+            .glyphs a {
+                margin: 0 8px;
+            }
         }
 
         .user {
@@ -1033,7 +1083,7 @@ img.avatar {
     .logout-link {
         position: absolute;
         bottom: 10px;
-        padding: 8px 20px !important;
+        padding: 8px 20px 8px 12px !important;
         width: 100%;
         border-top: $border;
     }
@@ -1336,6 +1386,21 @@ img.avatar {
 
         .d-icon-far-check-square {
             top: -1px;
+        }
+    }
+}
+
+.modal-outer-container {
+    .modal-body.avatar-selector {
+        .avatar-choice {
+            .btn {
+                background: transparent;
+                color: #098de6;
+
+                img {
+                    display: none;
+                }
+            }
         }
     }
 }
