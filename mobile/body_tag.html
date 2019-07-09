@@ -845,9 +845,10 @@
       {{/if}}
 
       {{#if showTopics}}
-      {{#each c.topics as |t|}}
-      {{mobile-category-topic topic=t}}
-      {{/each}}
+      {{basic-topic-list
+        hideCategory="true"
+        showPosters="true"
+        topics=c.topics}}
       {{/if}}
 
     </table>

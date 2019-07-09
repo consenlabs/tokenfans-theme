@@ -1275,6 +1275,18 @@ img.avatar {
             border-top: 0;
 
             .topic-list {
+                tbody {
+                    border-top: 0;
+                }
+
+                tr:first-of-type {
+                    border-bottom: none;
+                }
+
+                tr.topic-list-item {
+                    border-bottom: $border;
+                }
+
                 .main-link {
                     h3 {
                         padding: 0;
@@ -1284,10 +1296,21 @@ img.avatar {
                         top: 4px;
                     }
                 }
+
+                .topic-item-stats {
+                    .pull-right {
+                        float: unset;
+
+                        .activity {
+                            margin-left: 0;
+                        }
+                    }
+                }
             }
 
             .subcategories {
                 .badge-wrapper {
+                    margin-bottom: 4px;
                     padding: 4px 5px;
                     border-radius: 4px;
                     margin-right: 0;
@@ -1303,6 +1326,16 @@ img.avatar {
 
         footer {
             display: none;
+        }
+    }
+}
+
+.topic-statuses {
+    .topic-status {
+        display: inline;
+
+        .d-icon-far-check-square {
+            top: -1px;
         }
     }
 }
