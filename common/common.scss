@@ -97,7 +97,7 @@ tbody {
     height: 40px;
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 
     .names span.first {
