@@ -132,10 +132,9 @@ tbody {
 header.d-header {
     .d-header-icons {
 
-        .svg-icon-search,
-        .svg-icon-bars {
-            width: 24px;
-            height: 24px;
+        i.iconfont {
+            font-size: 24px;
+            color: #333;
         }
     }
 }
