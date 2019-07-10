@@ -431,6 +431,23 @@ section.user-right {
             right: 20px;
         }
 
+        &.user-preferences {
+            .save-button.control-group {
+                justify-content: flex-end;
+                position: absolute;
+                margin-top: -48px;
+                right: 20px;
+
+                .controls {
+                    background: transparent;
+
+                    .saved-user {
+                        color: #17153c;
+                    }
+                }
+            }
+        }
+
         .pref-profile-bg {
             .image-uploader {
                 width: 100%;
