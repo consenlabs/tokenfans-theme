@@ -17,6 +17,21 @@
   const iconNode = Discourse.__widget_helpers.iconNode
   const RawHtml = Discourse.__widget_helpers.rawHtml
 
+
+  function postUrl(slug, topicId, postNumber) {
+    var url = Discourse.getURL("/t/");
+    if (slug) {
+      url += slug + "/";
+    } else {
+      url += "topic/";
+    }
+    url += topicId;
+    if (postNumber > 1) {
+      url += "/" + postNumber;
+    }
+    return url;
+  }
+
   const REPLACER = {
     bars: "/assets/images/menu.svg",
     search: "/assets/images/search.svg",
@@ -227,7 +242,52 @@
     }
   })
 
-  api.reopenWidget("notification-item", {
+  api.reopenWidget("liked-notification-item", {
+    tagName: "li",
+    url(attrs) {
+      const data = attrs.data;
+      const notificationTypes = this.site.notification_types;
+
+      const badgeId = data.badge_id;
+      if (badgeId) {
+        let badgeSlug = data.badge_slug;
+
+        if (!badgeSlug) {
+          const badgeName = data.badge_name;
+          badgeSlug = badgeName.replace(/[^A-Za-z0-9_]+/g, "-").toLowerCase();
+        }
+
+        let username = data.username;
+        username = username ? "?username=" + username.toLowerCase() : "";
+        return Discourse.getURL(
+          "/badges/" + badgeId + "/" + badgeSlug + username
+        );
+      }
+
+      const topicId = attrs.topic_id;
+
+      if (topicId) {
+        return postUrl(attrs.slug, topicId, attrs.post_number);
+      }
+
+      if (attrs.notification_type === notificationTypes.invitee_accepted) {
+        return userPath(data.display_username);
+      }
+
+      if (attrs.notification_type === notificationTypes.liked_consolidated) {
+        return userPath(
+          `${attrs.username ||
+            this.currentUser
+              .username}/notifications/likes-received?acting_username=${
+            data.display_username
+          }`
+        );
+      }
+
+      if (data.group_id) {
+        return userPath(data.username + "/messages/group/" + data.group_name);
+      }
+    },
     html(attrs) {
       const notificationType = attrs.notification_type;
       const lookup = this.site.get("notificationLookup");
@@ -272,7 +332,8 @@
 
       let contents = [icon, html];
 
-      const href = this.url();
+      console.log(attrs)
+      const href = this.url(attrs);
       return href
           ? h(
               "a",
@@ -304,7 +365,7 @@
     const head = document.head || document.getElementsByTagName('head')[0];
     const link = document.createElement('link');
     link.rel = 'stylesheet'
-    link.href = '//at.alicdn.com/t/font_1283185_6paln0o939.css'
+    link.href = '//at.alicdn.com/t/font_1283185_levqk0urd6.css'
     head.appendChild(link)
   })
 </script>
