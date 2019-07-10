@@ -202,7 +202,9 @@ section.user-right {
                     font-size: $font-0;
                 }
 
-                svg {
+                svg,
+                img,
+                i {
                     display: none;
                 }
             }
