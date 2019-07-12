@@ -332,3 +332,18 @@ tbody {
     }
   }
 }
+
+.d-editor-button-bar .btn,
+.d-editor-button-bar .btn-default {
+  i {
+    color: #999 !important;
+
+    &:hover {
+      color: white !important;
+    }
+  }
+}
+
+.topic-meta-data {
+  height: 52px;
+}

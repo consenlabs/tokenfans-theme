@@ -99,10 +99,10 @@ tbody {
 }
 
 .topic-meta-data {
-    height: 36px;
+    height: 40px;
     display: flex;
     flex-flow: row nowrap;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
 
     .names span.first {
@@ -174,7 +174,7 @@ button.btn:active {
 .user-menu {
     .notifications {
         display: block;
-        max-height: calc(100vh - 150px);
+        max-height: calc(100vh - 180px);
         overflow-y: scroll;
 
         hr {
