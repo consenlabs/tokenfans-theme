@@ -330,6 +330,17 @@ tbody {
     .like-count {
       padding-left: 0 !important;
     }
+
+    .double-button:first-child {
+      display: inline-block;
+      height: 34px;
+      position: relative;
+      top: -6px;
+
+      .toggle-like {
+        float: left;
+      }
+    }
   }
 }
 

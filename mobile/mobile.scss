@@ -1222,204 +1222,214 @@ img.avatar {
             .like-count {
                 padding-left: 0 !important;
             }
-        }
-    }
-}
 
-.title-wrapper {
-    .topic-statuses {
-        margin-top: 5px;
-    }
-}
+            .double-button:first-child {
+                display: inline-block;
+                height: 34px;
+                position: relative;
+                top: 2px;
 
-.suggested-topics {
-    padding: 15px 20px;
-    margin-top: 15px;
-}
-
-.flag-modal .flag-action-type-details {
-    display: flex;
-    flex-flow: row wrap;
-
-    .description {
-        margin-left: 4px;
-    }
-}
-
-// 搜索交互处理有点困难
-// .search-container {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     box-sizing: border-box;
-//     background: white;
-//     z-index: 10000;
-
-//     input {
-//         box-shadow: unset;
-
-//         &:focus {
-//             box-shadow: unset;
-//         }
-//     }
-// }
-
-#user-card,
-#group-card {
-    max-width: 90vw;
-    margin: 0 5vw;
-    border-radius: 8px;
-
-    .card-content {
-        border-radius: 8px;
-        padding: 20px;
-
-        .user-profile-link {
-            font-size: 17px;
-            font-weight: 500;
-        }
-
-        .username {
-            font-weight: 13px;
-            color: #2b2b2b;
-            opacity: 0.5;
+                .toggle-like {
+                    float: left;
+                }
+            }
         }
     }
 
-    .first-row {
-        .usercard-controls {
-            margin-top: 4px;
-        }
-
-        .user-card-avatar {
-            margin-top: 0;
-        }
-    }
-}
-
-.modal-outer-container {
-    .modal-body {
-        label.btn {
-            background: #16153c;
-            color: white;
-            border-radius: 4px;
+    .title-wrapper {
+        .topic-statuses {
+            margin-top: 5px;
         }
     }
 
-    .modal-footer {
+    .suggested-topics {
+        padding: 15px 20px;
+        margin-top: 15px;
+    }
+
+    .flag-modal .flag-action-type-details {
         display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: center;
+        flex-flow: row wrap;
 
-        .btn {
-            margin: 0;
-            flex: 1;
-        }
-
-        a.d-modal-cancel {
-            background: #16153c;
-            color: white;
-            border-radius: 4px;
-            padding: 8px 14px;
-            font-size: $font-0;
-            line-height: 1;
-            flex: 1;
-            text-align: center;
+        .description {
+            margin-left: 4px;
         }
     }
-}
 
-#list-area {
-    .category-list {
-        margin-left: 0;
+    // 搜索交互处理有点困难
+    // .search-container {
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     box-sizing: border-box;
+    //     background: white;
+    //     z-index: 10000;
 
-        td:first-of-type {
-            padding-left: 0;
+    //     input {
+    //         box-shadow: unset;
+
+    //         &:focus {
+    //             box-shadow: unset;
+    //         }
+    //     }
+    // }
+
+    #user-card,
+    #group-card {
+        max-width: 90vw;
+        margin: 0 5vw;
+        border-radius: 8px;
+
+        .card-content {
+            border-radius: 8px;
+            padding: 20px;
+
+            .user-profile-link {
+                font-size: 17px;
+                font-weight: 500;
+            }
+
+            .username {
+                font-weight: 13px;
+                color: #2b2b2b;
+                opacity: 0.5;
+            }
         }
 
-        .category-list-item.category {
-            border-left: 0;
-            border-top: 0;
+        .first-row {
+            .usercard-controls {
+                margin-top: 4px;
+            }
 
-            .topic-list {
-                tbody {
-                    border-top: 0;
-                }
+            .user-card-avatar {
+                margin-top: 0;
+            }
+        }
+    }
 
-                tr:first-of-type {
-                    border-bottom: none;
-                }
+    .modal-outer-container {
+        .modal-body {
+            label.btn {
+                background: #16153c;
+                color: white;
+                border-radius: 4px;
+            }
+        }
 
-                tr.topic-list-item {
-                    border-bottom: $border;
-                }
+        .modal-footer {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
 
-                .main-link {
-                    h3 {
-                        padding: 0;
+            .btn {
+                margin: 0;
+                flex: 1;
+            }
+
+            a.d-modal-cancel {
+                background: #16153c;
+                color: white;
+                border-radius: 4px;
+                padding: 8px 14px;
+                font-size: $font-0;
+                line-height: 1;
+                flex: 1;
+                text-align: center;
+            }
+        }
+    }
+
+    #list-area {
+        .category-list {
+            margin-left: 0;
+
+            td:first-of-type {
+                padding-left: 0;
+            }
+
+            .category-list-item.category {
+                border-left: 0;
+                border-top: 0;
+
+                .topic-list {
+                    tbody {
+                        border-top: 0;
                     }
 
-                    .svg-icon {
-                        top: 4px;
+                    tr:first-of-type {
+                        border-bottom: none;
+                    }
+
+                    tr.topic-list-item {
+                        border-bottom: $border;
+                    }
+
+                    .main-link {
+                        h3 {
+                            padding: 0;
+                        }
+
+                        .svg-icon {
+                            top: 4px;
+                        }
+                    }
+
+                    .topic-item-stats {
+                        .pull-right {
+                            float: unset;
+
+                            .activity {
+                                margin-left: 0;
+                            }
+                        }
                     }
                 }
 
-                .topic-item-stats {
-                    .pull-right {
-                        float: unset;
+                .subcategories {
+                    .badge-wrapper {
+                        margin-bottom: 4px;
+                        padding: 4px 5px;
+                        border-radius: 4px;
+                        margin-right: 0;
+                        background-color: rgba(20, 19, 59, 0.1);
 
-                        .activity {
-                            margin-left: 0;
+                        span {
+                            font-size: 13px;
+                            color: #777a8c;
                         }
                     }
                 }
             }
 
-            .subcategories {
-                .badge-wrapper {
-                    margin-bottom: 4px;
-                    padding: 4px 5px;
-                    border-radius: 4px;
-                    margin-right: 0;
-                    background-color: rgba(20, 19, 59, 0.1);
+            footer {
+                display: none;
+            }
+        }
+    }
 
-                    span {
-                        font-size: 13px;
-                        color: #777a8c;
+    .topic-statuses {
+        .topic-status {
+            display: inline;
+
+            .d-icon-far-check-square {
+                top: -1px;
+            }
+        }
+    }
+
+    .modal-outer-container {
+        .modal-body.avatar-selector {
+            .avatar-choice {
+                .btn {
+                    background: transparent;
+                    color: #098de6;
+
+                    img {
+                        display: none;
                     }
                 }
             }
         }
-
-        footer {
-            display: none;
-        }
     }
-}
-
-.topic-statuses {
-    .topic-status {
-        display: inline;
-
-        .d-icon-far-check-square {
-            top: -1px;
-        }
-    }
-}
-
-.modal-outer-container {
-    .modal-body.avatar-selector {
-        .avatar-choice {
-            .btn {
-                background: transparent;
-                color: #098de6;
-
-                img {
-                    display: none;
-                }
-            }
-        }
-    }
-}
