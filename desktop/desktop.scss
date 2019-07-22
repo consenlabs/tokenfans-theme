@@ -327,16 +327,18 @@ tbody {
 
 .post-menu-area {
   nav.post-controls {
+    .actions {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+
     .like-count {
       padding-left: 0 !important;
-      margin-top: 1px;
     }
 
     .double-button {
       display: inline-block;
-      height: 34px;
-      position: relative;
-      top: 0;
 
       .toggle-like {
         float: left;

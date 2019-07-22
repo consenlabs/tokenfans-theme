@@ -1215,6 +1215,12 @@ img.avatar {
 
     .post-menu-area {
         nav.post-controls {
+            .actions {
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+            }
+
             .toggle-like {
                 padding-left: 0;
             }
@@ -1226,19 +1232,9 @@ img.avatar {
 
             .double-button {
                 display: inline-block;
-                height: 34px;
-                position: relative;
-                top: 2px;
 
                 .toggle-like {
                     float: left;
-
-                    .widget-button {
-                        .d-icon-d-unliked {
-                            position: relative;
-                            top: -2px;
-                        }
-                    }
                 }
             }
         }
