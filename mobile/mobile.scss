@@ -1438,3 +1438,8 @@ img.avatar {
         }
     }
 }
+
+.topic-post nav.post-controls .double-button button.button-count.my-likes,
+.topic-post nav.post-controls .double-button button.button-count.regular-likes {
+    display: unset;
+}
