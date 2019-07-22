@@ -327,8 +327,30 @@ tbody {
 
 .post-menu-area {
   nav.post-controls {
+    .actions {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+
     .like-count {
       padding-left: 0 !important;
+    }
+
+    .double-button {
+      display: inline-block;
+
+      .toggle-like {
+        float: left;
+      }
+
+      .widget-button {
+
+        svg,
+        i {
+          float: left;
+        }
+      }
     }
   }
 }
