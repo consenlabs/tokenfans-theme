@@ -329,16 +329,25 @@ tbody {
   nav.post-controls {
     .like-count {
       padding-left: 0 !important;
+      margin-top: 1px;
     }
 
-    .double-button:first-child {
+    .double-button {
       display: inline-block;
       height: 34px;
       position: relative;
-      top: -6px;
+      top: 0;
 
       .toggle-like {
         float: left;
+      }
+
+      .widget-button {
+
+        svg,
+        i {
+          float: left;
+        }
       }
     }
   }
