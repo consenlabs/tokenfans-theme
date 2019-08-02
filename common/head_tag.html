@@ -244,27 +244,27 @@
 </script>
 
 <script>
-  $(function () {
-    if (window.devicePixelRatio && devicePixelRatio >= 2) {
-      var testElem = document.createElement('div');
-      testElem.style.border = '.5px solid transparent';
-      document.body.appendChild(testElem);
-      if (testElem.offsetHeight == 1) {
-        var tbody = document.querySelector('tbody')
-        tbody && tbody.classList.add('hairlines');
+  // $(function () {
+  //   if (window.devicePixelRatio && devicePixelRatio >= 2) {
+  //     var testElem = document.createElement('div');
+  //     testElem.style.border = '.5px solid transparent';
+  //     document.body.appendChild(testElem);
+  //     if (testElem.offsetHeight == 1) {
+  //       var tbody = document.querySelector('tbody')
+  //       tbody && tbody.classList.add('hairlines');
 
-        var tr = document.querySelector('tr')
-        tr && tr.classList.add('hairlines');
-      }
-      document.body.removeChild(testElem);
-    }
-  })
+  //       var tr = document.querySelector('tr')
+  //       tr && tr.classList.add('hairlines');
+  //     }
+  //     document.body.removeChild(testElem);
+  //   }
+  // })
 
-  $(function () {
-    const head = document.head || document.getElementsByTagName('head')[0];
-    const link = document.createElement('link');
-    link.rel = 'stylesheet'
-    link.href = '//at.alicdn.com/t/font_1283185_tn3kthcjhf.css'
-    head.appendChild(link)
-  })
+  // $(function () {
+  const head = document.head || document.getElementsByTagName('head')[0];
+  const link = document.createElement('link');
+  link.rel = 'stylesheet'
+  link.href = '//at.alicdn.com/t/font_1283185_tn3kthcjhf.css'
+  head.appendChild(link)
+  // })
 </script>
