@@ -8,11 +8,12 @@
   api.replaceIcon('far-image', 'token-photo')
 
   const currentLocale = I18n.currentLocale(); 
-  I18n.translations[currentLocale].js.user.dismiss = "忽略全部未读";
-  I18n.translations[currentLocale].js.topic.create = "发帖";
-  I18n.translations[currentLocale].js.composer.create_topic = "发帖";
-  I18n.translations[currentLocale].js.user.email.title = "钱包地址";
-
+  if (currentLocale === 'zh_CN') {
+    I18n.translations[currentLocale].js.user.dismiss = "忽略全部未读";
+    I18n.translations[currentLocale].js.topic.create = "发帖";
+    I18n.translations[currentLocale].js.composer.create_topic = "发帖";
+    I18n.translations[currentLocale].js.user.email.title = "钱包地址";
+  }
   const h = require("virtual-dom").h;
   const iconNode = Discourse.__widget_helpers.iconNode
   const RawHtml = Discourse.__widget_helpers.rawHtml
