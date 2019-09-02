@@ -1221,6 +1221,16 @@ img.avatar {
                     float: left;
                 }
             }
+
+            .accepted {
+                white-space: nowrap;
+            }
+
+            .unaccepted {
+                .d-button-label {
+                    display: none;
+                }
+            }
         }
     }
 
