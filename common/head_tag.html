@@ -16,7 +16,7 @@
   }
   const h = require("virtual-dom").h;
   const { iconNode } = require("discourse-common/lib/icon-library");
-  const RawHtml = Discourse.__widget_helpers.rawHtml;
+  const RawHtml = require("discourse/widgets/raw-html");
 
 
   function postUrl(slug, topicId, postNumber) {
