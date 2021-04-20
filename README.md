@@ -71,3 +71,7 @@ registerUnbound("d-icon", function (id, params) {
 ### i18n
 
 部分 i18n 无法被覆盖，如 `topic.create`
+
+### Apple M1
+
+https://discuss.rubyonrails.org/t/tips-and-tricks-for-developing-rails-applications-on-apple-silicon/77089
