@@ -15,8 +15,8 @@
     I18n.translations[currentLocale].js.user.email.title = "钱包地址";
   }
   const h = require("virtual-dom").h;
-  const iconNode = Discourse.__widget_helpers.iconNode
-  const RawHtml = Discourse.__widget_helpers.rawHtml
+  const { iconNode } = require("discourse-common/lib/icon-library");
+  const RawHtml = Discourse.__widget_helpers.rawHtml;
 
 
   function postUrl(slug, topicId, postNumber) {

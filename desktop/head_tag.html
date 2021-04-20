@@ -1,6 +1,6 @@
 <script type="text/discourse-plugin" version="0.8">
   const h = require("virtual-dom").h;
-  const iconNode = Discourse.__widget_helpers.iconNode
+  const { iconNode } = require("discourse-common/lib/icon-library");
 
   const dropdown = {
     buildClasses(attrs) {
