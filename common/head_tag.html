@@ -17,10 +17,10 @@
   const h = require("virtual-dom").h;
   const { iconNode } = require("discourse-common/lib/icon-library");
   const RawHtml = require("discourse/widgets/raw-html");
-
+  const getURL = require("discourse-common/lib/get-url");
 
   function postUrl(slug, topicId, postNumber) {
-    var url = Discourse.getURL("/t/");
+    var url = getURL("/t/");
     if (slug) {
       url += slug + "/";
     } else {
@@ -184,7 +184,7 @@
     }
   })
 
-  api.reopenWidget("notification-item", {
+  api.reopenWidget("default-notification-item", {
     html(attrs) {
       const notificationType = attrs.notification_type;
       const lookup = this.site.get("notificationLookup");

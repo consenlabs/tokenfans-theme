@@ -1,6 +1,7 @@
 <script type="text/discourse-plugin" version="0.8">
   const h = require("virtual-dom").h;
   const { iconNode } = require("discourse-common/lib/icon-library");
+  const getURL = require("discourse-common/lib/get-url");
 
   const dropdown = {
     buildClasses(attrs) {
@@ -87,7 +88,7 @@
         iconId: "search-button",
         action: "toggleSearchMenu",
         active: attrs.searchVisible,
-        href: Discourse.getURL("/search")
+        href: getURL("/search")
       });
   
       const icons = [search];
