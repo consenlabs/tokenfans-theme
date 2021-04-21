@@ -1,8 +1,9 @@
 <script type="text/discourse-plugin" version="0.8">
   const h = require("virtual-dom").h;
   const { iconNode } = require("discourse-common/lib/icon-library");
-  const getURL = require("discourse-common/addon/lib/get-url");
+  const getURL = require("discourse-common/lib/get-url");
 
+  console.log('###', getURL)
   const dropdown = {
     buildClasses(attrs) {
       if (attrs.active) {
