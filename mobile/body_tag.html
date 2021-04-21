@@ -431,11 +431,7 @@
 
 <script type="text/x-handlebars" data-template-name="preferences/account">
   {{#if canSaveUser}}
-  <div class="control-group save-button">
-    <div class="controls">
-      {{partial 'user/preferences/save-button'}}
-    </div>
-  </div>
+    {{save-controls model=model action=(action "save") saved=saved}}
   {{/if}}
 
   <div class="control-group pref-username">
