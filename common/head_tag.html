@@ -16,9 +16,9 @@
   }
   const h = require("virtual-dom").h;
   const { iconNode } = require("discourse-common/lib/icon-library");
-  const RawHtml = require("discourse/widgets/raw-html");
   const getURL = require("discourse-common/lib/get-url");
-
+  const RawHtml = require("discourse/widgets/raw-html");
+  
   function postUrl(slug, topicId, postNumber) {
     var url = getURL("/t/");
     if (slug) {
