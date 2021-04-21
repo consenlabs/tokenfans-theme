@@ -20,7 +20,7 @@
   const RawHtml = require("discourse/widgets/raw-html");
   
   function postUrl(slug, topicId, postNumber) {
-    var url = getURL("/t/");
+    var url = getURL.default("/t/");
     if (slug) {
       url += slug + "/";
     } else {
